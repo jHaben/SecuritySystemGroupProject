@@ -19,7 +19,6 @@ import javafx.stage.Stage;
  * GUI Display class. 
  * The class essentially puts together the GUI.
  * 
- * 
  * @author Group: Mitchell Young, Kou Yang, Trung Pham, Jack Haben
  */
 
@@ -37,7 +36,7 @@ public class GUIDisplay extends Application {
 	private GUIButton button9 = new NumberButton("9");
 	private GUIButton button0 = new NumberButton("0");
 	
-	
+	// Event buttons
 	private GUIButton stayButton = new StayButton("Stay");
 	private GUIButton awayButton = new AwayButton("Away");
 	private GUIButton cancelButton = new CancelButton("Cancel");
@@ -55,13 +54,17 @@ public class GUIDisplay extends Application {
 	private Label readyStatusLabel = new Label("Ready Status");
 
 	// GridPanes to put the gui together.
-	GridPane userInterfacePane = new GridPane();
+	GridPane userInterfacePane = new GridPane(); // The entire pane.
 	GridPane topPane = new GridPane(); // Pane for the top half
 	GridPane bottomPane = new GridPane(); // Pane for the bottom half.
-	GridPane numbersGridPane = new GridPane();
+	GridPane numbersGridPane = new GridPane(); // Number pane for the numbers
 	
 
 	
+	/**
+	 * Start method that puts together the GUI.
+	 * 
+	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
@@ -85,7 +88,7 @@ public class GUIDisplay extends Application {
 		textArea.setPrefWidth(375);
 		topPane.add(textArea, 1, 0);
 
-		// Putting together bottom pane. Starting with checkboxes
+		// Putting together bottom pane. Starting with check boxes
 		bottomPane.add(zone1CheckBox, 0, 0);
 		bottomPane.add(zone2CheckBox, 1, 0);
 		bottomPane.add(zone3CheckBox, 2, 0);
@@ -93,7 +96,7 @@ public class GUIDisplay extends Application {
 		// Adding buttons and labels to bottom pane
 		bottomPane.add(stayButton, 4, 0);
 		bottomPane.add(awayButton, 5, 0);
-		bottomPane.add(cancelButton, 6, 0);
+		bottomPane.add(cancelButton, 7, 0);
 		bottomPane.add(readyStatusLabel, 2, 1);
 		bottomPane.add(motionDetectorButton, 2, 2);
 
