@@ -1,5 +1,11 @@
 package display;
 
+import buttons.AwayButton;
+import buttons.CancelButton;
+import buttons.GUIButton;
+import buttons.MotionDetectedButton;
+import buttons.NumberButton;
+import buttons.StayButton;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -9,23 +15,33 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+/**
+ * GUI Display class. 
+ * The class essentially puts together the GUI.
+ * 
+ * 
+ * @author Group: Mitchell Young, Kou Yang, Trung Pham, Jack Haben
+ */
+
 public class GUIDisplay extends Application {
 
-	// Button Stand-ins. We'll have to change these later accordingly.
-	private Button button1 = new Button("1");
-	private Button button2 = new Button("2");
-	private Button button3 = new Button("3");
-	private Button button4 = new Button("4");
-	private Button button5 = new Button("5");
-	private Button button6 = new Button("6");
-	private Button button7 = new Button("7");
-	private Button button8 = new Button("8");
-	private Button button9 = new Button("9");
-	private Button button0 = new Button("0");
-	private Button stayButton = new Button("Stay");
-	private Button awayButton = new Button("Away");
-	private Button cancelButton = new Button("Cancel");
-	private Button motionDetectorButton = new Button("Motion Detector");
+	// Number buttons
+	private GUIButton button1 = new NumberButton("1");
+	private GUIButton button2 = new NumberButton("2");
+	private GUIButton button3 = new NumberButton("3");
+	private GUIButton button4 = new NumberButton("4");
+	private GUIButton button5 = new NumberButton("5");
+	private GUIButton button6 = new NumberButton("6");
+	private GUIButton button7 = new NumberButton("7");
+	private GUIButton button8 = new NumberButton("8");
+	private GUIButton button9 = new NumberButton("9");
+	private GUIButton button0 = new NumberButton("0");
+	
+	
+	private GUIButton stayButton = new StayButton("Stay");
+	private GUIButton awayButton = new AwayButton("Away");
+	private GUIButton cancelButton = new CancelButton("Cancel");
+	private GUIButton motionDetectorButton = new MotionDetectedButton("Motion Detector");
 
 	// Check boxes
 	private CheckBox zone1CheckBox = new CheckBox("Zone 1");
@@ -43,7 +59,9 @@ public class GUIDisplay extends Application {
 	GridPane topPane = new GridPane(); // Pane for the top half
 	GridPane bottomPane = new GridPane(); // Pane for the bottom half.
 	GridPane numbersGridPane = new GridPane();
+	
 
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
@@ -89,10 +107,6 @@ public class GUIDisplay extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
-	}
-
-	public static void main(String[] args) {
-		Application.launch(null);
 	}
 
 }
