@@ -15,7 +15,7 @@ public abstract class SecuritySystemState {
 	public abstract void leave();
 	
 	public void handleEvent(UnarmedEvent event) {
-		
+		System.out.println("How about now?");
 	}
 	
 }

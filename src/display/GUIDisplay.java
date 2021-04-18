@@ -49,7 +49,7 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 	private CheckBox zone3CheckBox = new CheckBox("Zone 3");
 
 	// Text area to advise the user of what's going on
-	private TextArea textArea = new TextArea();
+	private TextArea textArea = new TextArea("Not Ready. One or more zones are open.");
 
 	// Label
 	private Label readyStatusLabel = new Label("Ready Status");
@@ -123,6 +123,7 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
+		System.out.println(securitySystemContext.instance().getCurrentState());
 	}
 
 
@@ -147,8 +148,7 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
 	@Override
 	public void showUnarmed() {
-		// TODO Auto-generated method stub
-		
+		textArea.setText("Not ready to arm. One or more doors are open.");		
 	}
 
 }
