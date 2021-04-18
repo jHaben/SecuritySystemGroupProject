@@ -13,4 +13,26 @@ public class SecuritySystemContext {
 	private SecuritySystemContext() {
 		instance = this;
 	}
+	
+	public static SecuritySystemContext instance() {
+		if (instance == null) {
+			instance = new SecuritySystemContext();
+		}
+		return instance;
+	}
+	
+	/**
+	 * setDisplay method.
+	 * When the display changes we can get the reference.
+	 * 
+	 * @param display
+	 */
+	public void setDisplay(SecuritySystemDisplay display) {
+		this.display = display;
+	}
+	
+	
+	
+	
+	
 }

@@ -11,6 +11,10 @@ public interface  SecuritySystemDisplay {
 	public void showTimeLeft(int time);
 	
 	public void showUnarmed();
+
+	public void showReady();
+	
+	public void showNotReady();
 	
 	
 	

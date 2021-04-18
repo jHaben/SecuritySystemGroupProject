@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import states.SecuritySystemContext;
 
 /**
  * GUI Display class. 
@@ -22,7 +23,7 @@ import javafx.stage.Stage;
  * @author Group: Mitchell Young, Kou Yang, Trung Pham, Jack Haben
  */
 
-public class GUIDisplay extends Application {
+public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
 	// Number buttons
 	private GUIButton button1 = new NumberButton("1");
@@ -59,6 +60,14 @@ public class GUIDisplay extends Application {
 	GridPane bottomPane = new GridPane(); // Pane for the bottom half.
 	GridPane numbersGridPane = new GridPane(); // Number pane for the numbers
 	
+    // Singleton information
+    private static SecuritySystemDisplay display;
+    private SecuritySystemContext securitySystemContext; 
+
+    public static SecuritySystemDisplay getInstance() {
+        return display;
+    }
+
 
 	
 	/**
@@ -67,6 +76,10 @@ public class GUIDisplay extends Application {
 	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		
+		securitySystemContext = SecuritySystemContext.instance();
+		securitySystemContext.setDisplay(this);
+		display = this;
 
 		// Buttons sitting in their own pane.
 		numbersGridPane.add(button1, 0, 0);
@@ -110,6 +123,32 @@ public class GUIDisplay extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
+	}
+
+
+
+	@Override
+	public void showTimeLeft(int time) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void showReady() {
+		textArea.setText("Ready to arm");
+	}
+	
+	@Override
+	public void showNotReady() {
+		textArea.setText("Not ready to arm. One or more doors are open.");		
+	}
+
+
+
+	@Override
+	public void showUnarmed() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
