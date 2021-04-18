@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 
 /**
  * Abstract GUI button. 
+ * 
  * @author  Group: Mitchell Young, Kou Yang, Trung Pham, Jack Haben
  *
  */
