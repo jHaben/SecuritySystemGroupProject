@@ -1,7 +1,7 @@
 package states;
 
 import display.SecuritySystemDisplay;
-import events.UnarmedEvent;
+import events.DoorOpensEvent;
 
 /**
  * SecuritySystemContext
@@ -82,8 +82,12 @@ public class SecuritySystemContext {
     }
 
     
-    public void handleEvent(UnarmedEvent event) {
+    public void handleEvent(DoorOpensEvent event) {
     	currentState.handleEvent(event);
     }
+
+	public void showReady() {
+		display.showReady();		
+	}
 	
 }

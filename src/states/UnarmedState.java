@@ -1,5 +1,7 @@
 package states;
 
+import events.AllDoorCloseEvent;
+
 public class UnarmedState extends SecuritySystemState {
 	private static UnarmedState instance;
 	
@@ -34,5 +36,9 @@ public class UnarmedState extends SecuritySystemState {
 		// TODO Auto-generated method stub
 		
 	}
+	public void HandleEvent(AllDoorCloseEvent event ) {
+		SecuritySystemContext.instance().changeState(ZoneReadyState.instance());
+	}
+	
 	
 }

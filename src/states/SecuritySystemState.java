@@ -1,6 +1,6 @@
 package states;
 
-import events.UnarmedEvent;
+import events.DoorOpensEvent;
 
 public abstract class SecuritySystemState {
 	
@@ -14,7 +14,7 @@ public abstract class SecuritySystemState {
 	 */
 	public abstract void leave();
 	
-	public void handleEvent(UnarmedEvent event) {
+	public void handleEvent(DoorOpensEvent event) {
 		
 	}
 	

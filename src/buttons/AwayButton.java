@@ -1,6 +1,6 @@
 package buttons;
 
-import events.UnarmedEvent;
+import events.DoorOpensEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import states.SecuritySystemContext;
@@ -22,7 +22,7 @@ public class AwayButton extends GUIButton implements EventHandler<ActionEvent> {
 
 	@Override
 	public void handle(ActionEvent event) {
-        SecuritySystemContext.instance().handleEvent(UnarmedEvent.instance());
+        SecuritySystemContext.instance().handleEvent(DoorOpensEvent.instance());
 	}
 
 }
