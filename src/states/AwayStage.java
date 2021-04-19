@@ -3,21 +3,21 @@ package states;
 import events.AllDoorCloseEvent;
 
 public class AwayStage extends SecuritySystemState {
-	private static UnarmedState instance;
+	private static AwayStage instance;
 	
 	/**
 	 * Private constructor. Singleton.
 	 */
-	private UnarmedState() {
+	private AwayStage() {
 	}
 	
 	/**
 	 * returning the instance
 	 * @return the instance object
 	 */
-	public static UnarmedState instance() {
+	public static AwayStage instance() {
 		if (instance == null) {
-			instance = new UnarmedState();
+			instance = new AwayStage();
 		}
 		return instance;
 	}
@@ -36,3 +36,4 @@ public class AwayStage extends SecuritySystemState {
 		// TODO Auto-generated method stub
 		
 	}
+}

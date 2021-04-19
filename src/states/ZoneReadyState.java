@@ -46,6 +46,6 @@ private static ZoneReadyState instance;
 		SecuritySystemContext.instance().changeState(StayCoundownStage.instance());
 	}
 	public void HandleEvent(AwayPressEvent event ) {
-		SecuritySystemContext.instance().changeState(AwayCountdownState.instance());
+		SecuritySystemContext.instance().changeState(AwayCountdownStage.instance());
 	}
 }

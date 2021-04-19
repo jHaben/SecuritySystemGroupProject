@@ -3,9 +3,13 @@ package display;
 import buttons.AwayButton;
 import buttons.CancelButton;
 import buttons.GUIButton;
+import buttons.GUICheckBox;
 import buttons.MotionDetectedButton;
 import buttons.NumberButton;
 import buttons.StayButton;
+import buttons.Zone1CheckBox;
+import buttons.Zone2CheckBox;
+import buttons.Zone3CheckBox;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -44,9 +48,9 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 	private GUIButton motionDetectorButton = new MotionDetectedButton("Motion Detector");
 
 	// Check boxes
-	private CheckBox zone1CheckBox = new CheckBox("Zone 1");
-	private CheckBox zone2CheckBox = new CheckBox("Zone 2");
-	private CheckBox zone3CheckBox = new CheckBox("Zone 3");
+	private GUICheckBox zone1CheckBox = new Zone1CheckBox("Zone 1");
+	private GUICheckBox zone2CheckBox = new Zone2CheckBox("Zone 2");
+	private GUICheckBox zone3CheckBox = new Zone3CheckBox("Zone 3");
 
 	// Text area to advise the user of what's going on
 	private TextArea textArea = new TextArea("Not Ready. One or more zones are open.");
