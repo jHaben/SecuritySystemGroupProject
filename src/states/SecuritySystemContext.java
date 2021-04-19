@@ -3,6 +3,13 @@ package states;
 import display.SecuritySystemDisplay;
 import events.UnarmedEvent;
 
+/**
+ * SecuritySystemContext
+ * 
+ * 
+ * @author Group: Mitchell Young, Kou Yang, Trung Pham, Jack Haben
+ */
+
 public class SecuritySystemContext {
 	private SecuritySystemDisplay display;
 	private SecuritySystemState currentState;
@@ -52,6 +59,13 @@ public class SecuritySystemContext {
 		instance.changeState(UnarmedState.instance());
 	}
 	
+	/**
+	 * ChangeState.
+	 * Method used to change the current state to the
+	 * next available state.
+	 * 
+	 * @param nextState object
+	 */
     public void changeState(SecuritySystemState nextState) {
     	System.out.println("Start it");
         currentState.leave();
@@ -59,7 +73,10 @@ public class SecuritySystemContext {
         currentState.enter();
     }
     
-
+    /**
+     * Calls the showNotReady method in SecuritySystemDisplay
+     * (Which in turn calls it in GUIDisplay).
+     */
     public void showNotReady() {
     	display.showNotReady();
     }
