@@ -5,13 +5,13 @@ import events.DoorOpensEvent;
 import javafx.event.ActionEvent;
 import states.SecuritySystemContext;
 import states.UnarmedStage;
+import states.ZoneReadyState;
 
 public class CheckBoxes  implements Runnable  {
 	private ZoneCheckBox zone1;
 	private ZoneCheckBox zone2;
 	private ZoneCheckBox zone3;
 	private Boolean zonesReady;
-	//private Boolean isAwake;
 	private Thread thread = new Thread(this);
 	private static CheckBoxes instance;
 	
@@ -21,17 +21,11 @@ public class CheckBoxes  implements Runnable  {
 	zone1= new ZoneCheckBox("zone1");
 	zone2= new ZoneCheckBox("zone2");	
 	zone3= new ZoneCheckBox("zone3");
-	//isAwake=true;
 	zonesReady=true;
 	thread.start();
 
 	}
-//	public Boolean getIsAwake() {
-//		return isAwake;
-//	}
-//	public void setIsAwake(Boolean isAwake) {
-//		this.isAwake = isAwake;
-//	}
+
 	public static CheckBoxes instance()  {
         if (instance == null) {
             instance = new CheckBoxes();
@@ -93,13 +87,26 @@ public class CheckBoxes  implements Runnable  {
 	public void run() {
 		while(true) {
 			
-		 while(!this.checkZonesReady()) {System.out.printf("");}
+		 while(!this.checkZonesReady()
+				 &&SecuritySystemContext.instance().getCurrentState()instanceof UnarmedStage)
+		 {
+			// zonesReady=zonesReady;
+			// System.out.printf("");
+		 }
 	     SecuritySystemContext.instance().handleEvent(AllDoorCloseEvent.instance());
-	     while(this.checkZonesReady()) {System.out.printf("");}
+	     
+	     
+	     while(this.checkZonesReady()
+	    		 &&SecuritySystemContext.instance().getCurrentState()instanceof ZoneReadyState)
+	     {
+	    	// zonesReady=zonesReady;	
+	    	// System.out.printf("");
+
+	      }
 	     SecuritySystemContext.instance().handleEvent(DoorOpensEvent.instance());
 	     
 	     }
-		}
+	}
 	
 }
 
