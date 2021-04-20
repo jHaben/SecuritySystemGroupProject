@@ -1,29 +1,38 @@
 package buttons;
 
-//import checkbox.panel.ZoneCheckBox;
 import events.AllDoorCloseEvent;
 import events.DoorOpensEvent;
 import javafx.event.ActionEvent;
 import states.SecuritySystemContext;
+import states.UnarmedStage;
 
 public class CheckBoxes  implements Runnable  {
 	private ZoneCheckBox zone1;
 	private ZoneCheckBox zone2;
 	private ZoneCheckBox zone3;
 	private Boolean zonesReady;
+	//private Boolean isAwake;
 	private Thread thread = new Thread(this);
 	private static CheckBoxes instance;
 	
 	
-	public CheckBoxes(){
+	
+	public CheckBoxes() {
 	zone1= new ZoneCheckBox("zone1");
 	zone2= new ZoneCheckBox("zone2");	
-	zone3= new ZoneCheckBox("zone3");	
-	zonesReady= false;
+	zone3= new ZoneCheckBox("zone3");
+	//isAwake=true;
+	zonesReady=true;
 	thread.start();
 
 	}
-	public static CheckBoxes instance() {
+//	public Boolean getIsAwake() {
+//		return isAwake;
+//	}
+//	public void setIsAwake(Boolean isAwake) {
+//		this.isAwake = isAwake;
+//	}
+	public static CheckBoxes instance()  {
         if (instance == null) {
             instance = new CheckBoxes();
         }
@@ -52,16 +61,22 @@ public class CheckBoxes  implements Runnable  {
 	public void setZone3(ZoneCheckBox zone3) {
 		this.zone3 = zone3;
 	}
-
+	public Thread getThread() {
+		return thread;
+	}
+	public void setThread(Thread thread) {
+		this.thread = thread;
+	}
 	public Boolean checkZonesReady() {
 		if(zone1.isReady()&&zone2.isReady()&&zone3.isReady())	{	
 				zonesReady=true;
 			return zonesReady;
 		}
-		else {
+		if(!zone1.isReady()||!zone2.isReady()||!zone3.isReady()) {
 			zonesReady=false;
 			return zonesReady;
 		}
+		return zonesReady;
 		
 	}
 	
@@ -76,14 +91,18 @@ public class CheckBoxes  implements Runnable  {
 
 	@Override
 	public void run() {
-		 while(!checkZonesReady()) {System.out.printf("");}
+		while(true) {
+			
+		 while(!this.checkZonesReady()) {System.out.printf("");}
 	     SecuritySystemContext.instance().handleEvent(AllDoorCloseEvent.instance());
-	     while(true) {
-	    	 checkZonesReady();
-	    	 //System.out.println(getZonesReady());
+	     while(this.checkZonesReady()) {System.out.printf("");}
+	     SecuritySystemContext.instance().handleEvent(DoorOpensEvent.instance());
+	     
 	     }
-	}
+		}
+	
 }
+
 		 
 
 

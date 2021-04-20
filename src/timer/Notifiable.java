@@ -17,6 +17,7 @@ public interface Notifiable {
 
     /**
      * Process timer runs out event
+     * @throws InterruptedException 
      */
-    public void handleEvent(SixtySecondEvent event);
+    public void handleEvent(SixtySecondEvent event) throws InterruptedException ;
 }

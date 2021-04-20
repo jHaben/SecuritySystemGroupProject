@@ -48,7 +48,7 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 	private GUIButton motionDetectorButton = new MotionDetectedButton("Motion Detector");
 
 	// Check boxes
-	private CheckBoxes zones= new CheckBoxes();
+	private CheckBoxes zones= CheckBoxes.instance();
 	//private GUICheckBox zone1CheckBox = new ZoneCheckBox("Zone 1");
 	//private GUICheckBox zone2CheckBox = new Zone2CheckBox("Zone 2");
 	//private GUICheckBox zone3CheckBox = new Zone3CheckBox("Zone 3");

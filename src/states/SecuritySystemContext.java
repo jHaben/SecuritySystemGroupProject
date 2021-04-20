@@ -70,8 +70,9 @@ public class SecuritySystemContext {
 	 * next available state.
 	 * 
 	 * @param nextState object
+	 * @throws InterruptedException 
 	 */
-    public void changeState(SecuritySystemState nextState) {
+    public void changeState(SecuritySystemState nextState)  {
     	System.out.println("Start it");
         currentState.leave();
         currentState = nextState;

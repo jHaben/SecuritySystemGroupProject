@@ -1,6 +1,7 @@
 package states;
 
 import timer.Timer;
+import buttons.CheckBoxes;
 import events.SixtySecondEvent;
 import events.TimerTickedEvent;
 import timer.Notifiable;
@@ -39,11 +40,12 @@ private Timer timer;
 	}
 
 	@Override
-	public void leave() {
+	public void leave()  {
 		timer.stop();
         timer = null;
         SecuritySystemContext.instance().showTimeRunOut();
-        SecuritySystemContext.instance().showTimeLeft(0);		
+        SecuritySystemContext.instance().showTimeLeft(0);
+        
 	}
 
 	@Override
@@ -52,9 +54,10 @@ private Timer timer;
 	}
 
 	@Override
-	public void handleEvent(SixtySecondEvent event) {
+	public void handleEvent(SixtySecondEvent event) throws InterruptedException {
 		SecuritySystemContext.instance().showTimeLeft(0);
-		 SecuritySystemContext.instance().changeState(StayCheckDoorStage.instance());		
+		SecuritySystemContext.instance().changeState(StayCheckDoorStage.instance());
+		
 	}
 
 }
