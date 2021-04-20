@@ -127,13 +127,15 @@ public class SecuritySystemContext {
 		display.showCounDownStart();		
 	}
 	public void showTimeLeft(int time) {
-	        display.showTimeLeft(time);
-	    }
+		display.showTimeLeft(time);
+		}
 
 	public void showTimeRunOut() {
 		display.showTimeRunOut();		
 	}
-
+	public void showPasswordRequiredMessageStayState() {
+		display.showPasswordRequiredMessageStayState();
+	}
 	public void showAwayArmed() {
 		display.showAwayArmed();		
 	}
@@ -141,6 +143,8 @@ public class SecuritySystemContext {
 	public void showStayArmed() {
 		display.showStayArmed();		
 	}
+	
+
 
 
 

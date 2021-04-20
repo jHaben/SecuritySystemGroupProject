@@ -22,18 +22,13 @@ public class PasswordRequiredStage extends SecuritySystemState {
 		return instance;
 	}
 	
-	/**
-	 * Entering unarmed state. 
-	 * Will display on the GUI
-	 */
 	@Override
 	public void enter() {
-		SecuritySystemContext.instance().showNotReady();
+		SecuritySystemContext.instance().showPasswordRequiredMessageStayState();
 	}
 
 	@Override
 	public void leave() {
-		// TODO Auto-generated method stub
 		
 	}
 }

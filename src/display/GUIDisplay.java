@@ -192,4 +192,12 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 		textArea.setText("Stay Armed");		
 	}
 
+
+
+	@Override
+	public void showPasswordRequiredMessageStayState() {
+		textArea.setText("Enter password to leave 'Stay' alarm");
+		
+	}
+
 }

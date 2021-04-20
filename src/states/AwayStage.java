@@ -23,7 +23,7 @@ public class AwayStage extends SecuritySystemState {
 	}
 	
 	/**
-	 * Entering unarmed state. 
+	 * Entering away-armed state. 
 	 * Will display on the GUI
 	 */
 	@Override
@@ -33,7 +33,5 @@ public class AwayStage extends SecuritySystemState {
 
 	@Override
 	public void leave() {
-		// TODO Auto-generated method stub
-		
 	}
 }

@@ -1,6 +1,7 @@
 package states;
 
 import events.AllDoorCloseEvent;
+import events.CancelPressEvent;
 
 public class StayStage extends SecuritySystemState {
 	private static StayStage  instance;
@@ -23,16 +24,18 @@ public class StayStage extends SecuritySystemState {
 	}
 	
 	/**
-	 * Entering unarmed state. 
+	 * Entering stay-armed state. 
 	 * Will display on the GUI
 	 */
 	@Override
 	public void enter() {
-		SecuritySystemContext.instance().showStayArmed();	}
+		SecuritySystemContext.instance().showStayArmed();
+	}
 
 	@Override
 	public void leave() {
-		// TODO Auto-generated method stub
-		
+	}
+	public void handleEvent(CancelPressEvent event) {
+		SecuritySystemContext.instance().changeState(PasswordRequiredStage.instance());
 	}
 }

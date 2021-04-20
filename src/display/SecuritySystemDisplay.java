@@ -31,6 +31,8 @@ public interface  SecuritySystemDisplay {
 	public void showAwayArmed();
 
 	public void showStayArmed();
+
+	public void showPasswordRequiredMessageStayState();
        
     
 	
