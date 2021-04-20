@@ -90,8 +90,12 @@ public class CheckBoxes  implements Runnable  {
 		 while(!this.checkZonesReady()
 				 &&SecuritySystemContext.instance().getCurrentState()instanceof UnarmedStage)
 		 {
-			// zonesReady=zonesReady;
-			// System.out.printf("");
+			 try {
+				    Thread.sleep(10);
+				} catch (InterruptedException e) {
+				    e.printStackTrace();
+				    Thread.currentThread().interrupt();
+				}
 		 }
 	     SecuritySystemContext.instance().handleEvent(AllDoorCloseEvent.instance());
 	     
@@ -99,8 +103,12 @@ public class CheckBoxes  implements Runnable  {
 	     while(this.checkZonesReady()
 	    		 &&SecuritySystemContext.instance().getCurrentState()instanceof ZoneReadyState)
 	     {
-	    	// zonesReady=zonesReady;	
-	    	// System.out.printf("");
+	    	 try {
+	    		    Thread.sleep(10);
+	    		} catch (InterruptedException e) {
+	    		    e.printStackTrace();
+	    		    Thread.currentThread().interrupt();
+	    		}
 
 	      }
 	     SecuritySystemContext.instance().handleEvent(DoorOpensEvent.instance());
