@@ -32,7 +32,7 @@ public class AwayCountdownStage extends SecuritySystemState implements Notifiabl
 	 */
 	@Override
 	public void enter() {
-		 timer = new Timer(this, 10);
+		 timer = new Timer(this, 5);
 	      // SecuritySystemContext.instance().showStayCowndown();
 	       SecuritySystemContext.instance().showTimeLeft(timer.getTimeValue());	}
 
@@ -40,7 +40,6 @@ public class AwayCountdownStage extends SecuritySystemState implements Notifiabl
 	public void leave() {
 		timer.stop();
         timer = null;
-        //SecuritySystemContext.instance().showTimeRunOut();
         SecuritySystemContext.instance().showTimeLeft(0);			
 	}
 
@@ -53,8 +52,8 @@ public class AwayCountdownStage extends SecuritySystemState implements Notifiabl
 	@Override
 	public void handleEvent(SixtySecondEvent event) {
 		 SecuritySystemContext.instance().showTimeLeft(0);
-		 //if(CheckBoxes.instance().checkZonesReady()) {
 		 SecuritySystemContext.instance().changeState(AwayCheckDoorStage.instance());		
 	}
 
 }
+	

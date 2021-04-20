@@ -28,8 +28,7 @@ public class StayStage extends SecuritySystemState {
 	 */
 	@Override
 	public void enter() {
-		SecuritySystemContext.instance().showNotReady();
-	}
+		SecuritySystemContext.instance().showStayArmed();	}
 
 	@Override
 	public void leave() {

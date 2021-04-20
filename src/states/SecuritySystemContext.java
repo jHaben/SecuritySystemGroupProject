@@ -24,7 +24,7 @@ public class SecuritySystemContext {
 	 */
 	private SecuritySystemContext() {
 		instance = this;
-		currentState = UnarmedState.instance();
+		currentState = UnarmedStage.instance();
 		//currentState.enter();
 	}
 	
@@ -61,7 +61,7 @@ public class SecuritySystemContext {
 	 * Initializing UnarmedState as the default state
 	 */
 	public void initialize() {
-		instance.changeState(UnarmedState.instance());
+		instance.changeState(UnarmedStage.instance());
 	}
 	
 	/**
@@ -121,6 +121,14 @@ public class SecuritySystemContext {
 
 	public void showTimeRunOut() {
 		display.showTimeRunOut();		
+	}
+
+	public void showAwayArmed() {
+		display.showAwayArmed();		
+	}
+
+	public void showStayArmed() {
+		display.showStayArmed();		
 	}
 
 	

@@ -1,5 +1,6 @@
 package states;
 
+import buttons.CheckBoxes;
 import events.AllDoorCloseEvent;
 
 public class AwayCheckDoorStage extends SecuritySystemState {
@@ -28,7 +29,10 @@ public class AwayCheckDoorStage extends SecuritySystemState {
 	 */
 	@Override
 	public void enter() {
-		SecuritySystemContext.instance().showNotReady();
+		//if(CheckBoxes.instance().getZonesReady()) {
+			 SecuritySystemContext.instance().changeState(AwayStage.instance());	
+		//}
+		//else  SecuritySystemContext.instance().changeState(UnarmedStage.instance());	
 	}
 
 	@Override

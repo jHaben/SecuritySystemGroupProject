@@ -33,7 +33,7 @@ private Timer timer;
 	 */
 	@Override
 	public void enter() {
-		  timer = new Timer(this, 10);
+		  timer = new Timer(this, 5);
 	       SecuritySystemContext.instance().showStayCowndown();
 	       SecuritySystemContext.instance().showTimeLeft(timer.getTimeValue());
 	}
@@ -53,8 +53,8 @@ private Timer timer;
 
 	@Override
 	public void handleEvent(SixtySecondEvent event) {
-		// TODO Auto-generated method stub
-		
+		SecuritySystemContext.instance().showTimeLeft(0);
+		 SecuritySystemContext.instance().changeState(StayCheckDoorStage.instance());		
 	}
 
 }

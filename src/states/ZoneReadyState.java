@@ -39,13 +39,13 @@ private static ZoneReadyState instance;
 		// TODO Auto-generated method stub
 		
 	}
-	public void HandleEvent(DoorOpensEvent event ) {
-		SecuritySystemContext.instance().changeState(UnarmedState.instance());
+	public void handleEvent(DoorOpensEvent event ) {
+		SecuritySystemContext.instance().changeState(UnarmedStage.instance());
 	}
-	public void HandleEvent(StayPressEvent event ) {
+	public void handleEvent(StayPressEvent event ) {
 		SecuritySystemContext.instance().changeState(StayCoundownStage.instance());
 	}
-	public void HandleEvent(AwayPressEvent event ) {
+	public void handleEvent(AwayPressEvent event ) {
 		SecuritySystemContext.instance().changeState(AwayCountdownStage.instance());
 	}
 }

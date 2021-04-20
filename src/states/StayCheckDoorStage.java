@@ -28,7 +28,7 @@ public class StayCheckDoorStage extends SecuritySystemState {
 	 */
 	@Override
 	public void enter() {
-		SecuritySystemContext.instance().showNotReady();
+		 SecuritySystemContext.instance().changeState(StayStage.instance());
 	}
 
 	@Override

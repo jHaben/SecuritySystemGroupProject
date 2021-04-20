@@ -65,17 +65,26 @@ public class CheckBoxes  implements Runnable  {
 		
 	}
 	
-	 public void handle(ActionEvent event) {
+	 public Boolean getZonesReady() {
+		return zonesReady;
+	}
+	public void setZonesReady(Boolean zonesReady) {
+		this.zonesReady = zonesReady;
+	}
+	public void handle(ActionEvent event) {
 	 }
 
 	@Override
 	public void run() {
-		 
-			 while(!checkZonesReady()) {System.out.printf("");}
-	          
-	            	SecuritySystemContext.instance().handleEvent(AllDoorCloseEvent.instance());
+		 while(!checkZonesReady()) {System.out.printf("");}
+	     SecuritySystemContext.instance().handleEvent(AllDoorCloseEvent.instance());
+	     while(true) {
+	    	 checkZonesReady();
+	    	 //System.out.println(getZonesReady());
+	     }
 	}
-	}	 
+}
+		 
 
 
 	     

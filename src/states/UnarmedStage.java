@@ -2,22 +2,22 @@ package states;
 
 import events.AllDoorCloseEvent;
 
-public class UnarmedState extends SecuritySystemState {
-	private static UnarmedState instance;
+public class UnarmedStage extends SecuritySystemState {
+	private static UnarmedStage instance;
 	
 	/**
 	 * Private constructor. Singleton.
 	 */
-	private UnarmedState() {
+	private UnarmedStage() {
 	}
 	
 	/**
 	 * returning the instance
 	 * @return the instance object
 	 */
-	public static UnarmedState instance() {
+	public static UnarmedStage instance() {
 		if (instance == null) {
-			instance = new UnarmedState();
+			instance = new UnarmedStage();
 		}
 		return instance;
 	}

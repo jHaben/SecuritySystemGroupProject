@@ -171,4 +171,19 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 		textArea.setText("Time coundown start");		
 	}
 
+
+
+	@Override
+	public void showAwayArmed() {
+		textArea.setText("Away Armed");
+		
+	}
+
+
+
+	@Override
+	public void showStayArmed() {
+		textArea.setText("Stay Armed");		
+	}
+
 }

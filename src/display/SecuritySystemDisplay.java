@@ -27,6 +27,10 @@ public interface  SecuritySystemDisplay {
 	
 
 	public void showTimeRunOut();
+
+	public void showAwayArmed();
+
+	public void showStayArmed();
        
     
 	
