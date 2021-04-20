@@ -3,6 +3,7 @@ package states;
 import display.SecuritySystemDisplay;
 import events.AllDoorCloseEvent;
 import events.AwayPressEvent;
+import events.CancelPressEvent;
 import events.DoorOpensEvent;
 import events.MovementEvent;
 import events.StayPressEvent;
@@ -73,24 +74,23 @@ public class SecuritySystemContext {
 	 * @throws InterruptedException 
 	 */
     public void changeState(SecuritySystemState nextState)  {
-    	System.out.println("Start it");
+    	System.out.println("Changing states - (SecuritySystemContext.java -> changeState())");
         currentState.leave();
         currentState = nextState;
         currentState.enter();
     }
     
+
     /**
-     * Calls the showNotReady method in SecuritySystemDisplay
-     * (Which in turn calls it in GUIDisplay).
+     * Creating methods to determine the event.
+     * Remember to create an empty method in SecuritySystemState.java
+     * with the event object as the parameter.
+     * 
      */
-    public void showNotReady() {
-    	display.showNotReady();
-    }
-    public void showReady() {
-		display.showReady();		
+	public void handleEvent(CancelPressEvent event) {
+		currentState.handleEvent(event);
 	}
-    
-    
+	
     public void handleEvent(DoorOpensEvent event) {
     	currentState.handleEvent(event);
     }
@@ -112,7 +112,17 @@ public class SecuritySystemContext {
 		currentState.handleEvent(event);
 		
 	}
-
+	
+    /**
+     * Calls the showNotReady method in SecuritySystemDisplay
+     * (Which in turn calls it in GUIDisplay).
+     */
+    public void showNotReady() {
+    	display.showNotReady();
+    }
+    public void showReady() {
+		display.showReady();		
+	}
 	public void showStayCowndown() {
 		display.showCounDownStart();		
 	}
@@ -131,6 +141,8 @@ public class SecuritySystemContext {
 	public void showStayArmed() {
 		display.showStayArmed();		
 	}
+
+
 
 	
 	

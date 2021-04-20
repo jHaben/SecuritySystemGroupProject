@@ -36,7 +36,7 @@ public class UnarmedStage extends SecuritySystemState {
 		SecuritySystemContext.instance().showReady();		
 	}
 	public void handleEvent(AllDoorCloseEvent event ) {
-		System.out.println("right here");
+		System.out.println("Going into `Ready to Arm` state - (UnarmedStage.java )");
 		SecuritySystemContext.instance().changeState(ZoneReadyState.instance());
 	}
 	

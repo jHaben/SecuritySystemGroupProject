@@ -3,6 +3,7 @@ package display;
 import buttons.AwayButton;
 import buttons.CancelButton;
 import buttons.CheckBoxes;
+import buttons.CurrentStateButton;
 import buttons.GUIButton;
 import buttons.GUICheckBox;
 import buttons.MotionDetectedButton;
@@ -29,6 +30,9 @@ import states.SecuritySystemContext;
 
 public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
+	// ==== TEMPORARY BUTTON FOR DEBUGGING ====
+	private GUIButton currentStateButton = new CurrentStateButton("Click for current state");
+	
 	// Number buttons
 	private GUIButton button1 = new NumberButton("1");
 	private GUIButton button2 = new NumberButton("2");
@@ -117,6 +121,9 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 		bottomPane.add(cancelButton, 7, 0);
 		bottomPane.add(readyStatusLabel, 2, 1);
 		bottomPane.add(motionDetectorButton, 2, 2);
+		
+		// ====TEMPORARY BUTTON FOR DEBUGGING (TO CHECK CURRENT STATE) =====
+		bottomPane.add(currentStateButton, 2,3);
 
 		// Adding all the panes together
 		userInterfacePane.add(topPane, 0, 0);
@@ -127,9 +134,8 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 		primaryStage.setTitle("Security System");
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		//showNotReady();
+
 		securitySystemContext.instance().getCurrentState().enter();
-		System.out.println(securitySystemContext.instance().getCurrentState());
 	}
 
 

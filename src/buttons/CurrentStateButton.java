@@ -1,14 +1,14 @@
 package buttons;
 
+import events.AllDoorCloseEvent;
 import events.CancelPressEvent;
 import events.StayPressEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import states.SecuritySystemContext;
-import states.SecuritySystemState;
 
 /**
- * CancelButton class.
+ * StayButton class.
  * extends GUIButton class. The button gets the String from GUIDisplay.
  * The handle event will determine what events are to happen.
  * 
@@ -16,8 +16,10 @@ import states.SecuritySystemState;
  *
  */
 
-public class CancelButton extends GUIButton implements EventHandler<ActionEvent> {
-	public CancelButton(String string) {
+public class CurrentStateButton extends GUIButton implements EventHandler<ActionEvent> {
+	
+	
+	public CurrentStateButton(String string) {
 		super(string);
 	}
 
@@ -28,15 +30,6 @@ public class CancelButton extends GUIButton implements EventHandler<ActionEvent>
 		 * Has to be in the handle method.
 		 */
 		String currentStateString = SecuritySystemContext.instance().getCurrentState().getClass().getSimpleName();
-		if (currentStateString.equals("StayStage")) {
-			System.out.println("Cancel button was clicked while in Stay state (CancelButton.java)");
-			SecuritySystemContext.instance().handleEvent(CancelPressEvent.instance());
-		} else {
-			System.out.println("Cancel button was clicked while NOT in Stay state (CancelButton.java)");
+		System.out.println(currentStateString);
 		}
-
-		
-		
-	}
-
 }

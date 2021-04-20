@@ -2,6 +2,7 @@ package states;
 
 import events.AllDoorCloseEvent;
 import events.AwayPressEvent;
+import events.CancelPressEvent;
 import events.DoorOpensEvent;
 import events.MovementEvent;
 import events.StayPressEvent;
@@ -23,6 +24,10 @@ public abstract class SecuritySystemState {
 	}
 
 	public  void handleEvent(AllDoorCloseEvent event) {
+		
+	}
+	
+	public void handleEvent(CancelPressEvent event) {
 		
 	}
 

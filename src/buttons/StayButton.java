@@ -16,7 +16,8 @@ import states.SecuritySystemContext;
  */
 
 public class StayButton extends GUIButton implements EventHandler<ActionEvent> {
-
+	
+	
 	public StayButton(String string) {
 		super(string);
 	}
