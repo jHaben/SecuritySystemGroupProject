@@ -1,7 +1,10 @@
 package buttons;
 
+import events.AwayPressEvent;
+import events.MovementEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import states.SecuritySystemContext;
 
 /**
  * MotionDetectedButton class.
@@ -20,8 +23,7 @@ public class MotionDetectedButton extends GUIButton implements EventHandler<Acti
 
 	@Override
 	public void handle(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
+		 SecuritySystemContext.instance().handleEvent(MovementEvent.instance());		
 	}
 
 }

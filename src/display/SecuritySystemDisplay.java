@@ -22,6 +22,13 @@ public interface  SecuritySystemDisplay {
 	public void showReady();
 	
 	public void showNotReady();
+
+	public void showCounDownStart();
+	
+
+	public void showTimeRunOut();
+       
+    
 	
 
 	

@@ -2,14 +2,13 @@ package display;
 
 import buttons.AwayButton;
 import buttons.CancelButton;
+import buttons.CheckBoxes;
 import buttons.GUIButton;
 import buttons.GUICheckBox;
 import buttons.MotionDetectedButton;
 import buttons.NumberButton;
 import buttons.StayButton;
-import buttons.Zone1CheckBox;
-import buttons.Zone2CheckBox;
-import buttons.Zone3CheckBox;
+import buttons.ZoneCheckBox;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -17,6 +16,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import states.SecuritySystemContext;
 
@@ -48,13 +48,14 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 	private GUIButton motionDetectorButton = new MotionDetectedButton("Motion Detector");
 
 	// Check boxes
-	private GUICheckBox zone1CheckBox = new Zone1CheckBox("Zone 1");
-	private GUICheckBox zone2CheckBox = new Zone2CheckBox("Zone 2");
-	private GUICheckBox zone3CheckBox = new Zone3CheckBox("Zone 3");
+	private CheckBoxes zones= new CheckBoxes();
+	//private GUICheckBox zone1CheckBox = new ZoneCheckBox("Zone 1");
+	//private GUICheckBox zone2CheckBox = new Zone2CheckBox("Zone 2");
+	//private GUICheckBox zone3CheckBox = new Zone3CheckBox("Zone 3");
 
 	// Text area to advise the user of what's going on
-	private TextArea textArea = new TextArea("Not Ready. One or more zones are open.");
-
+	private Text textArea = new Text();
+	
 	// Label
 	private Label readyStatusLabel = new Label("Ready Status");
 
@@ -101,14 +102,14 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 		topPane.add(numbersGridPane, 0, 0);
 
 		// Text area that'll display what's going on
-		textArea.setPrefHeight(100);
-		textArea.setPrefWidth(375);
+		//textArea.setPrefHeight(100);
+		//textArea.setPrefWidth(375);
 		topPane.add(textArea, 1, 0);
 
 		// Putting together bottom pane. Starting with check boxes
-		bottomPane.add(zone1CheckBox, 0, 0);
-		bottomPane.add(zone2CheckBox, 1, 0);
-		bottomPane.add(zone3CheckBox, 2, 0);
+		bottomPane.add(zones.getZone1(), 0, 0);
+		bottomPane.add(zones.getZone2(), 1, 0);
+		bottomPane.add(zones.getZone3(), 2, 0);
 
 		// Adding buttons and labels to bottom pane
 		bottomPane.add(stayButton, 4, 0);
@@ -126,7 +127,8 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 		primaryStage.setTitle("Security System");
 		primaryStage.setScene(scene);
 		primaryStage.show();
-
+		//showNotReady();
+		securitySystemContext.instance().getCurrentState().enter();
 		System.out.println(securitySystemContext.instance().getCurrentState());
 	}
 
@@ -134,12 +136,13 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
 	@Override
 	public void showTimeLeft(int time) {
-		// TODO Auto-generated method stub
+		textArea.setText(" " + time);
 		
 	}
 	
 	@Override
 	public void showReady() {
+		//textArea.clear();
 		textArea.setText("Ready to arm");
 	}
 	
@@ -153,6 +156,19 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 	@Override
 	public void showUnarmed() {
 		textArea.setText("Not ready to arm. One or more doors are open.");		
+	}
+
+
+
+	@Override
+	public void showCounDownStart() {
+		textArea.setText("Time coundown start");		
+	}
+
+
+	@Override
+	public void showTimeRunOut() {
+		textArea.setText("Time coundown start");		
 	}
 
 }

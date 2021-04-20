@@ -1,8 +1,14 @@
 package states;
 
-public class AwayCountdownStage extends SecuritySystemState{
-private static AwayCountdownStage instance;
-	
+import buttons.CheckBoxes;
+import events.SixtySecondEvent;
+import events.TimerTickedEvent;
+import timer.Notifiable;
+import timer.Timer;
+
+public class AwayCountdownStage extends SecuritySystemState implements Notifiable{
+	private static AwayCountdownStage instance;
+	 private Timer timer;
 	/**
 	 * Private constructor. Singleton.
 	 */
@@ -26,13 +32,29 @@ private static AwayCountdownStage instance;
 	 */
 	@Override
 	public void enter() {
-		//SecuritySystemContext.instance().showReady();
-	}
+		 timer = new Timer(this, 10);
+	      // SecuritySystemContext.instance().showStayCowndown();
+	       SecuritySystemContext.instance().showTimeLeft(timer.getTimeValue());	}
 
 	@Override
 	public void leave() {
-		// TODO Auto-generated method stub
+		timer.stop();
+        timer = null;
+        //SecuritySystemContext.instance().showTimeRunOut();
+        SecuritySystemContext.instance().showTimeLeft(0);			
+	}
+
+	@Override
+	public void handleEvent(TimerTickedEvent event) {
+		SecuritySystemContext.instance().showTimeLeft(timer.getTimeValue());
 		
+	}
+
+	@Override
+	public void handleEvent(SixtySecondEvent event) {
+		 SecuritySystemContext.instance().showTimeLeft(0);
+		 //if(CheckBoxes.instance().checkZonesReady()) {
+		 SecuritySystemContext.instance().changeState(AwayCheckDoorStage.instance());		
 	}
 
 }

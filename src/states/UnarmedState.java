@@ -33,10 +33,10 @@ public class UnarmedState extends SecuritySystemState {
 
 	@Override
 	public void leave() {
-		// TODO Auto-generated method stub
-		
+		SecuritySystemContext.instance().showReady();		
 	}
-	public void HandleEvent(AllDoorCloseEvent event ) {
+	public void handleEvent(AllDoorCloseEvent event ) {
+		System.out.println("right here");
 		SecuritySystemContext.instance().changeState(ZoneReadyState.instance());
 	}
 	

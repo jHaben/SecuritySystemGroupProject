@@ -1,7 +1,11 @@
 package states;
 
 import display.SecuritySystemDisplay;
+import events.AllDoorCloseEvent;
+import events.AwayPressEvent;
 import events.DoorOpensEvent;
+import events.MovementEvent;
+import events.StayPressEvent;
 
 /**
  * SecuritySystemContext
@@ -21,6 +25,7 @@ public class SecuritySystemContext {
 	private SecuritySystemContext() {
 		instance = this;
 		currentState = UnarmedState.instance();
+		//currentState.enter();
 	}
 	
 	public static SecuritySystemContext instance() {
@@ -32,7 +37,7 @@ public class SecuritySystemContext {
 	
 	
 	// These are temporary methods used to find the current state
-	// Meant for debugging.
+	// Meant for debugging	
 	public SecuritySystemState getCurrentState() {
 		return currentState;
 	}
@@ -80,14 +85,44 @@ public class SecuritySystemContext {
     public void showNotReady() {
     	display.showNotReady();
     }
-
+    public void showReady() {
+		display.showReady();		
+	}
+    
     
     public void handleEvent(DoorOpensEvent event) {
     	currentState.handleEvent(event);
     }
 
-	public void showReady() {
-		display.showReady();		
+	public void handleEvent(AllDoorCloseEvent event) {
+		currentState.handleEvent(event);		
 	}
+
+	public void handleEvent(MovementEvent event) {
+		currentState.handleEvent(event);
+		
+	}
+
+	public void handleEvent(StayPressEvent event) {
+		currentState.handleEvent(event);		
+	}
+
+	public void handleEvent(AwayPressEvent event) {
+		currentState.handleEvent(event);
+		
+	}
+
+	public void showStayCowndown() {
+		display.showCounDownStart();		
+	}
+	public void showTimeLeft(int time) {
+	        display.showTimeLeft(time);
+	    }
+
+	public void showTimeRunOut() {
+		display.showTimeRunOut();		
+	}
+
+	
 	
 }
