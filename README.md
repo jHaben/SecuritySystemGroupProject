@@ -2,7 +2,8 @@
 
 <h1> ToDo List </h1>
 Unarmed State
-  - [x] Unarmed x All Doors Closed = Zone Ready: Unarmed
+
+  - [X] Unarmed x All Doors Closed = Zone Ready: Unarmed
 
 Zone Ready Unarmed
   - [X] Zone Ready Unarmed x Away Button = Away Countdown
@@ -73,5 +74,7 @@ then repeats the cycle.
 
 <h2>SystemSecurityContext</h2>
 The class itself has instances of the Display and state. 
-The methods on the bottom control the GUI screen by calling dispay.**Action here**
+The methods on the bottom control the GUI screen by calling 
+
+display.**Action here**
 
