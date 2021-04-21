@@ -31,8 +31,8 @@ Stay
 
 Password Required
   - [ ] Password Required x Door(s) Open = Breach
-  - [ ] Password Required x Cancel Button = Stay
-  - [ ] Password Required x Valid Password = Unarmed
+  - [X] Password Required x Cancel Button = Stay
+  - [X] Password Required x Valid Password = Unarmed
 
 Warning
   - [ ] Warning x Valid Password = Unarmed
