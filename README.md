@@ -26,7 +26,7 @@ Away
   - [ ] Away x Movement = Warning
 
 Stay
-  - [X] Stay x Door(s) Open = Breach
+  - [ ] Stay x Door(s) Open = Breach
   - [ ] Stay x Cancel = Password Required
 
 Password Required
