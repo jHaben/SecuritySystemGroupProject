@@ -32,7 +32,7 @@ public interface  SecuritySystemDisplay {
 
 	public void showStayArmed();
 
-	public void showPasswordRequiredMessageStayState();
+	public void showPasswordRequired();
        
     
 	

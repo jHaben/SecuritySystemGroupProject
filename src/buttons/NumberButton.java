@@ -15,7 +15,7 @@ public class NumberButton extends GUIButton implements EventHandler<ActionEvent>
 	}
 
 	@Override
-	public void handle(ActionEvent arg0) {
+	public void handle(ActionEvent event) {
 		System.out.println("Number button: " + numberButtonValue + ", has been clicked. (NumberButton.java)");
 		
 	}

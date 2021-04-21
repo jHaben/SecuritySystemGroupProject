@@ -133,8 +133,8 @@ public class SecuritySystemContext {
 	public void showTimeRunOut() {
 		display.showTimeRunOut();		
 	}
-	public void showPasswordRequiredMessageStayState() {
-		display.showPasswordRequiredMessageStayState();
+	public void showPasswordRequired() {
+		display.showPasswordRequired();
 	}
 	public void showAwayArmed() {
 		display.showAwayArmed();		

@@ -1,6 +1,8 @@
 package states;
 
+import buttons.NumberButton;
 import events.AllDoorCloseEvent;
+import events.TimerTickedEvent;
 
 public class PasswordRequiredStage extends SecuritySystemState {
 	private static PasswordRequiredStage instance;
@@ -24,11 +26,14 @@ public class PasswordRequiredStage extends SecuritySystemState {
 	
 	@Override
 	public void enter() {
-		SecuritySystemContext.instance().showPasswordRequiredMessageStayState();
+		SecuritySystemContext.instance().showPasswordRequired();
 	}
 
 	@Override
 	public void leave() {
 		
 	}
+	
+	
+	
 }
