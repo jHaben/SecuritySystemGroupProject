@@ -86,10 +86,9 @@ public class CheckBoxes  implements Runnable  {
 	@Override
 	public void run() {
 		while(true) {
-			
+		// While zones are not ready, and we are in Unarmed Stage
 		 while(!this.checkZonesReady()
-				 &&SecuritySystemContext.instance().getCurrentState()instanceof UnarmedStage)
-		 {
+				 &&SecuritySystemContext.instance().getCurrentState()instanceof UnarmedStage) {
 			 try {
 				    Thread.sleep(10);
 				} catch (InterruptedException e) {
@@ -97,6 +96,7 @@ public class CheckBoxes  implements Runnable  {
 				    Thread.currentThread().interrupt();
 				}
 		 }
+		 
 	     SecuritySystemContext.instance().handleEvent(AllDoorCloseEvent.instance());
 	     
 	     
@@ -111,6 +111,7 @@ public class CheckBoxes  implements Runnable  {
 	    		}
 
 	      }
+	     
 	     SecuritySystemContext.instance().handleEvent(DoorOpensEvent.instance());
 	     
 	     }
