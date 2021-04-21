@@ -54,12 +54,10 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
 	// Check boxes
 	private CheckBoxes zones= CheckBoxes.instance();
-	//private GUICheckBox zone1CheckBox = new ZoneCheckBox("Zone 1");
-	//private GUICheckBox zone2CheckBox = new Zone2CheckBox("Zone 2");
-	//private GUICheckBox zone3CheckBox = new Zone3CheckBox("Zone 3");
 
 	// Text area to advise the user of what's going on
 	private Text textArea = new Text();
+
 	
 	// Label
 	private Label readyStatusLabel = new Label("Ready Status");
@@ -110,6 +108,7 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 		// textArea.setPrefHeight(100);
 		// textArea.setPrefWidth(375);
 		topPane.add(textArea, 1, 0);
+
 
 		// Putting together bottom pane. Starting with check boxes
 		bottomPane.add(zones.getZone1(), 0, 0);
@@ -197,7 +196,8 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
 	@Override
 	public void showPasswordRequired() {
-		textArea.setText("Enter password to unarm alarm");
+		textArea.setText("Enter password to disarm alarm");
+		
 	}
 	
 	@Override

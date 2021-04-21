@@ -1,6 +1,7 @@
 package states;
 
 import events.AllDoorCloseEvent;
+import events.CancelPressEvent;
 
 public class AwayStage extends SecuritySystemState {
 	private static AwayStage instance;
@@ -34,4 +35,7 @@ public class AwayStage extends SecuritySystemState {
 	@Override
 	public void leave() {
 	}
+	
+	
+	
 }

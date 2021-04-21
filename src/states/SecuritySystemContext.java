@@ -5,6 +5,7 @@ import events.AllDoorCloseEvent;
 import events.AwayPressEvent;
 import events.CancelPressEvent;
 import events.DoorOpensEvent;
+
 import events.MovementEvent;
 import events.StayPressEvent;
 import events.ValidPassEvent;
@@ -106,6 +107,7 @@ public class SecuritySystemContext {
 	public void handleEvent(ValidPassEvent event) {
 		currentState.handleEvent(event);
 	}
+
 	
     public void handleEvent(DoorOpensEvent event) {
     	currentState.handleEvent(event);
@@ -144,7 +146,7 @@ public class SecuritySystemContext {
 	}
 	public void showTimeLeft(int time) {
 		display.showTimeLeft(time);
-		}
+	}
 
 	public void showTimeRunOut() {
 		display.showTimeRunOut();		
@@ -152,8 +154,9 @@ public class SecuritySystemContext {
 	public void showPasswordRequired() {
 		display.showPasswordRequired();
 	}
+	
 	public void passwordBeingEntered() {
-		display.clearText();
+		display.showPasswordRequired();
 	}
 	
 	public void showAwayArmed() {
@@ -167,6 +170,8 @@ public class SecuritySystemContext {
 	public void showBreachState() {
 		display.showBreachState();
 	}
+
+
 
 
 

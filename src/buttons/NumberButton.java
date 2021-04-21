@@ -20,19 +20,22 @@ public class NumberButton extends GUIButton implements EventHandler<ActionEvent>
 		numberButtonValue = string;
 	}
 
+	/**
+	 * Handle method. Listens to any number that gets clicked
+	 * Whenever a number gets triggered, it clears the text field of what was already there
+	 * example "Enter password to disarm alarm", then calls a method to 'write' the clicked number.
+	 * 
+	 * After which, the handlevent in passwordRequiredStage.java copies what is entered, places 
+	 * it in it's own variable, and re-displays it for the user, the handle method clears it every time.
+	 * 
+	 */
 	@Override
 	public void handle(ActionEvent event) {
-
 		String currentStateString = SecuritySystemContext.instance().getCurrentState().getClass().getSimpleName();
-		while (currentStateString.equals("PasswordRequiredStage")) {
-			
-		}
-		
-		
 		if(currentStateString.equals("PasswordRequiredStage")) {
+			GUIDisplay.getInstance().clearText();
 			GUIDisplay.getInstance().showingPassword(numberButtonValue);
-
-			
+			SecuritySystemContext.instance().handleEvent(ValidPassEvent.instance());
 		}
 		
 	}

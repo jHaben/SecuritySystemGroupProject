@@ -1,5 +1,7 @@
 package states;
 
+import com.sun.org.apache.xerces.internal.parsers.SecurityConfiguration;
+
 import buttons.CheckBoxes;
 import buttons.NumberButton;
 import display.GUIDisplay;
@@ -12,7 +14,8 @@ import events.ValidPassEvent;
 
 public class PasswordRequiredStage extends SecuritySystemState {
 	private static PasswordRequiredStage instance;
-
+	
+	private String userEnteredPassword = "";
 	private String password = "1234";
 	
 	/**
@@ -61,11 +64,22 @@ public class PasswordRequiredStage extends SecuritySystemState {
 		}
 	}
 	
+	
+	/**
+	 * handleEvent method.
+	 * Stores whatever the user entered into it's own variable and re-displays it.
+	 * 
+	 * It later then checks to see if the password is valid or not. 
+	 * 
+	 * If it's valid, it moves to the next stage. 
+	 */
 	@Override
 	public void handleEvent(ValidPassEvent event) {
-		
-		SecuritySystemContext.instance().getDisplay().showPasswordRequired();
-		System.out.println(SecuritySystemContext.instance().getDisplay().getGuiText().getText());
+		userEnteredPassword += SecuritySystemContext.instance().getDisplay().getGuiText().getText();
+		SecuritySystemContext.instance().getDisplay().getGuiText().setText(userEnteredPassword);
+		if (userEnteredPassword.equals(password)) {
+			SecuritySystemContext.instance().changeState(UnarmedStage.instance());
+		}
 		
 	}
 	
