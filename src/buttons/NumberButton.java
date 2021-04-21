@@ -1,8 +1,12 @@
 package buttons;
 
 import display.GUIDisplay;
+import events.CancelPressEvent;
+import events.ValidPassEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import states.PasswordRequiredStage;
+import states.SecuritySystemContext;
 
 public class NumberButton extends GUIButton implements EventHandler<ActionEvent>{
 	private String numberButtonValue;
@@ -18,7 +22,19 @@ public class NumberButton extends GUIButton implements EventHandler<ActionEvent>
 
 	@Override
 	public void handle(ActionEvent event) {
-		GUIDisplay.getInstance().showingPassword(numberButtonValue);
+
+		String currentStateString = SecuritySystemContext.instance().getCurrentState().getClass().getSimpleName();
+		while (currentStateString.equals("PasswordRequiredStage")) {
+			
+		}
+		
+		
+		if(currentStateString.equals("PasswordRequiredStage")) {
+			GUIDisplay.getInstance().showingPassword(numberButtonValue);
+
+			
+		}
+		
 	}
 
 }

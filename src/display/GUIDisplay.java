@@ -30,7 +30,7 @@ import states.SecuritySystemContext;
 
 public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
-	private String passwordEntered = "";
+	public String passwordEntered = "";
 	// ==== TEMPORARY BUTTON FOR DEBUGGING ====
 	private GUIButton currentStateButton = new CurrentStateButton("Click for current state");
 	
@@ -107,8 +107,8 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 		topPane.add(numbersGridPane, 0, 0);
 
 		// Text area that'll display what's going on
-		//textArea.setPrefHeight(100);
-		//textArea.setPrefWidth(375);
+		// textArea.setPrefHeight(100);
+		// textArea.setPrefWidth(375);
 		topPane.add(textArea, 1, 0);
 
 		// Putting together bottom pane. Starting with check boxes
@@ -198,21 +198,27 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 	@Override
 	public void showPasswordRequired() {
 		textArea.setText("Enter password to unarm alarm");
-		
 	}
 	
 	@Override
 	public void showingPassword(String numberButtonValue) {
-//		passwordEntered += numberButtonValue;
-//		textArea.setText(passwordEntered);
-//		if (passwordEntered == password) {
-//			
-//		}
+		textArea.setText(textArea.getText() + numberButtonValue);
 	}
 	
 	@Override
 	public void showBreachState() {
 		textArea.setText("BREACH");
+	}
+	
+	@Override
+	public void clearText() {
+		textArea.setText("");
+	}
+	
+	@Override
+	public Text getGuiText() {
+		return textArea;
+		
 	}
 
 }

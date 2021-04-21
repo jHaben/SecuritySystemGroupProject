@@ -1,5 +1,7 @@
 package display;
 
+import javafx.scene.text.Text;
+
 /**
  * SecuritySystemDisplay class
  * Parent class for the GUIDisplay.
@@ -37,6 +39,10 @@ public interface  SecuritySystemDisplay {
 	public void showingPassword(String numberButtonValue);
 
 	public void showBreachState();
+
+	public void clearText();
+	
+	public Text getGuiText();
 
        
     

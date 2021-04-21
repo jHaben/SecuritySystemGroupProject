@@ -36,11 +36,15 @@ public class StayStage extends SecuritySystemState {
 
 	@Override
 	public void leave() {
+
 	}
 	public void handleEvent(CancelPressEvent event) {
 		SecuritySystemContext.instance().changeState(PasswordRequiredStage.instance());
 	}
 	
+	/**
+	 * If a zone opens while it is in the StayArmed state
+	 */
 	@Override
 	public void handleEvent(DoorOpensEvent event) {
 		if(!CheckBoxes.instance().checkZonesReady()) {

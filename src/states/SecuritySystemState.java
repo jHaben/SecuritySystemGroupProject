@@ -6,6 +6,7 @@ import events.CancelPressEvent;
 import events.DoorOpensEvent;
 import events.MovementEvent;
 import events.StayPressEvent;
+import events.ValidPassEvent;
 
 public abstract class SecuritySystemState {
 	
@@ -45,5 +46,11 @@ public abstract class SecuritySystemState {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public void handleEvent(ValidPassEvent event) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 }

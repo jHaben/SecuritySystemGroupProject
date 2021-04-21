@@ -7,6 +7,7 @@ import events.CancelPressEvent;
 import events.DoorOpensEvent;
 import events.MovementEvent;
 import events.StayPressEvent;
+import events.ValidPassEvent;
 
 /**
  * SecuritySystemContext
@@ -53,6 +54,17 @@ public class SecuritySystemContext {
 	 * When the display changes we can get the reference.
 	 * 
 	 * @param display
+	 * @return 
+	 */
+	public SecuritySystemDisplay getDisplay() {
+		return display;
+	}
+	
+	/**
+	 * setDisplay method.
+	 * When the display changes we can get the reference.
+	 * 
+	 * @param display
 	 */
 	public void setDisplay(SecuritySystemDisplay display) {
 		this.display = display;
@@ -87,7 +99,11 @@ public class SecuritySystemContext {
      * with the event object as the parameter.
      * 
      */
+
 	public void handleEvent(CancelPressEvent event) {
+		currentState.handleEvent(event);
+	}
+	public void handleEvent(ValidPassEvent event) {
 		currentState.handleEvent(event);
 	}
 	
@@ -136,6 +152,10 @@ public class SecuritySystemContext {
 	public void showPasswordRequired() {
 		display.showPasswordRequired();
 	}
+	public void passwordBeingEntered() {
+		display.clearText();
+	}
+	
 	public void showAwayArmed() {
 		display.showAwayArmed();		
 	}
@@ -147,6 +167,8 @@ public class SecuritySystemContext {
 	public void showBreachState() {
 		display.showBreachState();
 	}
+
+
 
 
 
