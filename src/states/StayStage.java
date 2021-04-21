@@ -1,7 +1,9 @@
 package states;
 
+import buttons.CheckBoxes;
 import events.AllDoorCloseEvent;
 import events.CancelPressEvent;
+import events.DoorOpensEvent;
 
 public class StayStage extends SecuritySystemState {
 	private static StayStage  instance;
@@ -37,5 +39,12 @@ public class StayStage extends SecuritySystemState {
 	}
 	public void handleEvent(CancelPressEvent event) {
 		SecuritySystemContext.instance().changeState(PasswordRequiredStage.instance());
+	}
+	
+	@Override
+	public void handleEvent(DoorOpensEvent event) {
+		if(!CheckBoxes.instance().checkZonesReady()) {
+			SecuritySystemContext.instance().changeState(BreachStage.instance());
+		}
 	}
 }

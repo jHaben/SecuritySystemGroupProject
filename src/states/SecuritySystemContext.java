@@ -144,6 +144,9 @@ public class SecuritySystemContext {
 		display.showStayArmed();		
 	}
 	
+	public void showBreachState() {
+		display.showBreachState();
+	}
 
 
 

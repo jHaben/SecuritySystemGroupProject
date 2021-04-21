@@ -1,10 +1,12 @@
 package buttons;
 
+import display.GUIDisplay;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 public class NumberButton extends GUIButton implements EventHandler<ActionEvent>{
-	String numberButtonValue;
+	private String numberButtonValue;
+	
 	/**
 	 * Button for the number
 	 * @param string
@@ -16,8 +18,7 @@ public class NumberButton extends GUIButton implements EventHandler<ActionEvent>
 
 	@Override
 	public void handle(ActionEvent event) {
-		System.out.println("Number button: " + numberButtonValue + ", has been clicked. (NumberButton.java)");
-		
+		GUIDisplay.getInstance().showingPassword(numberButtonValue);
 	}
 
 }

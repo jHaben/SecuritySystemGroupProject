@@ -33,6 +33,11 @@ public interface  SecuritySystemDisplay {
 	public void showStayArmed();
 
 	public void showPasswordRequired();
+
+	public void showingPassword(String numberButtonValue);
+
+	public void showBreachState();
+
        
     
 	

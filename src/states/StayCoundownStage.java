@@ -2,6 +2,7 @@ package states;
 
 import timer.Timer;
 import buttons.CheckBoxes;
+import events.DoorOpensEvent;
 import events.SixtySecondEvent;
 import events.TimerTickedEvent;
 import timer.Notifiable;
@@ -59,5 +60,7 @@ private Timer timer;
 		SecuritySystemContext.instance().changeState(StayCheckDoorStage.instance());
 		
 	}
+	
+
 
 }

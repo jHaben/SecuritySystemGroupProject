@@ -31,6 +31,8 @@ public class CancelButton extends GUIButton implements EventHandler<ActionEvent>
 		if (currentStateString.equals("StayStage")) {
 			System.out.println("Cancel button was clicked while in Stay state (CancelButton.java)");
 			SecuritySystemContext.instance().handleEvent(CancelPressEvent.instance());
+		} else if (currentStateString.equals("PasswordRequiredStage")) {
+			SecuritySystemContext.instance().handleEvent(CancelPressEvent.instance());
 		} else {
 			System.out.println("Cancel button was clicked while NOT in Stay state (CancelButton.java)");
 		}

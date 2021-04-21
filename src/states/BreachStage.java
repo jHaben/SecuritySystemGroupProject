@@ -23,12 +23,11 @@ public class BreachStage extends SecuritySystemState {
 	}
 	
 	/**
-	 * Entering unarmed state. 
-	 * Will display on the GUI
+	 * Entering the breach stage.
 	 */
 	@Override
 	public void enter() {
-		SecuritySystemContext.instance().showNotReady();
+		SecuritySystemContext.instance().showBreachState();
 	}
 
 	@Override

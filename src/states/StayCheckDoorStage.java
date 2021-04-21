@@ -30,10 +30,12 @@ public class StayCheckDoorStage extends SecuritySystemState {
 	@Override
 	public void enter() {
 		if(CheckBoxes.instance().checkZonesReady()) {
-		    SecuritySystemContext.instance().changeState(StayStage.instance());}
-		else  
+		    SecuritySystemContext.instance().changeState(StayStage.instance());
+		    } else {  
 			SecuritySystemContext.instance().changeState(UnarmedStage.instance());
+		}
 	}
+	
 	
 
 	@Override

@@ -30,6 +30,7 @@ import states.SecuritySystemContext;
 
 public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
+	private String passwordEntered = "";
 	// ==== TEMPORARY BUTTON FOR DEBUGGING ====
 	private GUIButton currentStateButton = new CurrentStateButton("Click for current state");
 	
@@ -192,12 +193,26 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 		textArea.setText("Stay Armed");		
 	}
 
-
+	
 
 	@Override
 	public void showPasswordRequired() {
 		textArea.setText("Enter password to unarm alarm");
 		
+	}
+	
+	@Override
+	public void showingPassword(String numberButtonValue) {
+//		passwordEntered += numberButtonValue;
+//		textArea.setText(passwordEntered);
+//		if (passwordEntered == password) {
+//			
+//		}
+	}
+	
+	@Override
+	public void showBreachState() {
+		textArea.setText("BREACH");
 	}
 
 }
