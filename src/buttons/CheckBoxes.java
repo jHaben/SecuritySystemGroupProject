@@ -2,127 +2,101 @@ package buttons;
 
 import events.AllDoorCloseEvent;
 import events.DoorOpensEvent;
-import javafx.event.ActionEvent;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.IntegerBinding;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableSet;
+import javafx.scene.control.CheckBox;
 import states.SecuritySystemContext;
-import states.UnarmedStage;
-import states.ZoneReadyState;
 
-public class CheckBoxes  implements Runnable  {
-	private ZoneCheckBox zone1;
-	private ZoneCheckBox zone2;
-	private ZoneCheckBox zone3;
-	private Boolean zonesReady;
-	private Thread thread = new Thread(this);
+public class CheckBoxes {
+	private CheckBox zone1;
+	private CheckBox zone2;
+	private CheckBox zone3;
+	private Boolean zonesReady = false;
 	private static CheckBoxes instance;
-	
-	
-	
+
+	private ObservableSet<CheckBox> selectedCheckBoxes = FXCollections.observableSet();
+	private IntegerBinding numCheckBoxesSelected = Bindings.size(selectedCheckBoxes);
+
+	private final int maxNumSelected = 3;
+
 	public CheckBoxes() {
-	zone1= new ZoneCheckBox("zone1");
-	zone2= new ZoneCheckBox("zone2");	
-	zone3= new ZoneCheckBox("zone3");
-	zonesReady=true;
-	thread.start();
+		zone1 = new CheckBox("zone1");
+		zone2 = new CheckBox("zone2");
+		zone3 = new CheckBox("zone3");
+
+		this.initialize();
 
 	}
 
-	public static CheckBoxes instance()  {
-        if (instance == null) {
-            instance = new CheckBoxes();
-        }
-        return instance;
-    }	
-	public ZoneCheckBox getZone1() {
+	public static CheckBoxes instance() {
+		if (instance == null) {
+			instance = new CheckBoxes();
+		}
+		return instance;
+	}
+
+	public void initialize() {
+
+		configureCheckBox(zone1);
+		configureCheckBox(zone2);
+		configureCheckBox(zone3);
+
+		numCheckBoxesSelected.addListener((obs, oldSelectedCount, newSelectedCount) -> {
+			if (newSelectedCount.intValue() == maxNumSelected) {
+				zonesReady = true;
+				SecuritySystemContext.instance().handleEvent(AllDoorCloseEvent.instance());
+			} else {
+				zonesReady = false;
+				SecuritySystemContext.instance().handleEvent(DoorOpensEvent.instance());
+			}
+		});
+
+	}
+
+	/**
+	 * @return the zone1
+	 */
+	public CheckBox getZone1() {
 		return zone1;
 	}
 
-	public void setZone1(ZoneCheckBox zone1) {
-		this.zone1 = zone1;
-	}
-
-	public ZoneCheckBox getZone2() {
+	/**
+	 * @return the zone2
+	 */
+	public CheckBox getZone2() {
 		return zone2;
 	}
 
-	public void setZone2(ZoneCheckBox zone2) {
-		this.zone2 = zone2;
-	}
-
-	public ZoneCheckBox getZone3() {
+	/**
+	 * @return the zone3
+	 */
+	public CheckBox getZone3() {
 		return zone3;
 	}
 
-	public void setZone3(ZoneCheckBox zone3) {
-		this.zone3 = zone3;
-	}
-	public Thread getThread() {
-		return thread;
-	}
-	public void setThread(Thread thread) {
-		this.thread = thread;
-	}
-	public Boolean checkZonesReady() {
-		if(zone1.isReady()&&zone2.isReady()&&zone3.isReady())	{	
-				zonesReady=true;
-			return zonesReady;
-		}
-		if(!zone1.isReady()||!zone2.isReady()||!zone3.isReady()) {
-			zonesReady=false;
-			return zonesReady;
-		}
-		return zonesReady;
-		
-	}
-	
-	 public Boolean getZonesReady() {
+	public Boolean getZonesReady() {
 		return zonesReady;
 	}
-	public void setZonesReady(Boolean zonesReady) {
-		this.zonesReady = zonesReady;
-	}
-	public void handle(ActionEvent event) {
-	 }
 
-	@Override
-	public void run() {
-		while(true) {
-		// While zones are not ready, and we are in Unarmed Stage
-		 while(!this.checkZonesReady()
-				 &&SecuritySystemContext.instance().getCurrentState()instanceof UnarmedStage) {
-			 try {
-				    Thread.sleep(10);
-				} catch (InterruptedException e) {
-				    e.printStackTrace();
-				    Thread.currentThread().interrupt();
-				}
-		 }
-		 
-	     SecuritySystemContext.instance().handleEvent(AllDoorCloseEvent.instance());
-	     
-	     
-	     while(this.checkZonesReady()
-	    		 &&SecuritySystemContext.instance().getCurrentState()instanceof ZoneReadyState)
-	     {
-	    	 try {
-	    		    Thread.sleep(10);
-	    		} catch (InterruptedException e) {
-	    		    e.printStackTrace();
-	    		    Thread.currentThread().interrupt();
-	    		}
+	private void configureCheckBox(CheckBox checkBox) {
 
-	      }
-	     
-	     SecuritySystemContext.instance().handleEvent(DoorOpensEvent.instance());
-	     
-	     }
+		if (checkBox.isSelected()) {
+			selectedCheckBoxes.add(checkBox);
+		}
+
+		checkBox.selectedProperty().addListener((obs, wasSelected, isNowSelected) -> {
+			if (isNowSelected) {
+
+				selectedCheckBoxes.add(checkBox);
+			} else {
+				selectedCheckBoxes.remove(checkBox);
+
+			}
+
+		});
+
 	}
-	
+
 }
-
-		 
-
-
-	     
-	
-
-
