@@ -19,6 +19,7 @@ Stay Countdown
 Away Check Doors
   - [X] Away Check Doors x All Doors Closed = Away
   - [X] Away Check Doors x Door(s) Opens = Unarmed
+
 Stay Check Doors
   - [X] Stay Check Doors x All Doors Closed = Stay
   - [X] Stay Check Doors x Door(s) Opens = Unarmed
