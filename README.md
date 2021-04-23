@@ -24,8 +24,8 @@ Stay Check Doors
   - [X] Stay Check Doors x Door(s) Opens = Unarmed
 
 Away
-  - [ ] Away x Door(s) Opens = Warning
-  - [ ] Away x Movement = Warning
+  - [X] Away x Door(s) Opens = Warning
+  - [X] Away x Movement = Warning
 
 Stay
   - [ ] Stay x Door(s) Open = Breach
