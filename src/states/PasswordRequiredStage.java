@@ -38,6 +38,7 @@ public class PasswordRequiredStage extends SecuritySystemState {
 	@Override
 	public void enter() {
 		SecuritySystemContext.instance().showPasswordRequired();
+		userEnteredPassword = "";
 	}
 
 	@Override
