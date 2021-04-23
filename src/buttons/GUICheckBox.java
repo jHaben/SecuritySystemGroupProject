@@ -13,7 +13,7 @@ import javafx.event.EventHandler;
  *
  */
 
-public abstract class GUICheckBox extends CheckBox implements EventHandler<ActionEvent>{
+public abstract class GUICheckBox extends CheckBox{
 	/**
 	 * Creating Check boxes with appropriate text.
 	 * 

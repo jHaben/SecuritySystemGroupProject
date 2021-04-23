@@ -29,9 +29,9 @@ public class AwayCheckDoorStage extends SecuritySystemState {
 	 */
 	@Override
 	public void enter() {
-		if(CheckBoxes.instance().getZonesReady()) {
+	if(CheckBoxes.instance().getZonesReady()) {
 			 SecuritySystemContext.instance().changeState(AwayStage.instance());	
-		}
+		}	
 		else  SecuritySystemContext.instance().changeState(UnarmedStage.instance());	
 	}
 
