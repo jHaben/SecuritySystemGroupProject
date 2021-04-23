@@ -45,7 +45,7 @@ public class PasswordRequiredStage extends SecuritySystemState {
 	 */
 	@Override
 	public void handleEvent(CancelPressEvent event) {
-		SecuritySystemContext.instance().changeState(StayCheckDoorStage.instance());
+		SecuritySystemContext.instance().changeState(StayStage.instance());
 
 	}
 
@@ -72,7 +72,7 @@ public class PasswordRequiredStage extends SecuritySystemState {
 		userEnteredPassword += SecuritySystemContext.instance().getDisplay().getGuiText().getText();
 		SecuritySystemContext.instance().getDisplay().getGuiText().setText(userEnteredPassword);
 		if (userEnteredPassword.equals(password)) {
-			SecuritySystemContext.instance().changeState(UnarmedStage.instance());
+			SecuritySystemContext.instance().changeState(ZoneReadyState.instance());
 		}
 
 	}
