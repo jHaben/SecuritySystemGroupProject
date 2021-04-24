@@ -212,6 +212,12 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 	}
 
 	@Override
+	public void showWarning() {
+		textArea.setText("Warning!\n Enter password to disarm system.");
+
+	}
+
+	@Override
 	public void showingPassword(String numberButtonValue) {
 		textArea.setText(textArea.getText() + numberButtonValue);
 	}

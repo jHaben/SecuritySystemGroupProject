@@ -1,18 +1,17 @@
 package states;
 
-import events.AllDoorCloseEvent;
-
 public class WarningStage extends SecuritySystemState {
 	private static WarningStage instance;
-	
+
 	/**
 	 * Private constructor. Singleton.
 	 */
 	private WarningStage() {
 	}
-	
+
 	/**
 	 * returning the instance
+	 * 
 	 * @return the instance object
 	 */
 	public static WarningStage instance() {
@@ -21,19 +20,18 @@ public class WarningStage extends SecuritySystemState {
 		}
 		return instance;
 	}
-	
+
 	/**
-	 * Entering unarmed state. 
-	 * Will display on the GUI
+	 * Entering unarmed state. Will display on the GUI
 	 */
 	@Override
 	public void enter() {
-		SecuritySystemContext.instance().showNotReady();
+		SecuritySystemContext.instance().showWarning();
 	}
 
 	@Override
 	public void leave() {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

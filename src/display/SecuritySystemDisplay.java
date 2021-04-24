@@ -3,30 +3,27 @@ package display;
 import javafx.scene.text.Text;
 
 /**
- * SecuritySystemDisplay class
- * Parent class for the GUIDisplay.
- * All methods will be intialized here and be given 
- * functions in GUIDisplay.
+ * SecuritySystemDisplay class Parent class for the GUIDisplay. All methods will
+ * be intialized here and be given functions in GUIDisplay.
  * 
  * @author Group: Mitchell Young, Kou Yang, Trung Pham, Jack Haben
  */
-public interface  SecuritySystemDisplay {
-	
+public interface SecuritySystemDisplay {
+
 	/**
 	 * Displays the time remaining
 	 * 
 	 * @param time: Time remaining
 	 */
 	public void showTimeLeft(int time);
-	
+
 	public void showUnarmed();
 
 	public void showReady();
-	
+
 	public void showNotReady();
 
 	public void showCounDownStart();
-	
 
 	public void showTimeRunOut();
 
@@ -36,18 +33,14 @@ public interface  SecuritySystemDisplay {
 
 	public void showPasswordRequired();
 
+	public void showWarning();
+
 	public void showingPassword(String numberButtonValue);
 
 	public void showBreachState();
 
 	public void clearText();
-	
+
 	public Text getGuiText();
 
-       
-    
-	
-
-	
-	
 }
