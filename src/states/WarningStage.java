@@ -1,7 +1,17 @@
 package states;
 
-public class WarningStage extends SecuritySystemState {
+import events.SixtySecondEvent;
+import events.TimerTickedEvent;
+import events.ValidPassEvent;
+import timer.Notifiable;
+import timer.Timer;
+
+public class WarningStage extends SecuritySystemState implements Notifiable {
 	private static WarningStage instance;
+	private Timer timer;
+
+	private String userEnteredPassword = "";
+	private String password = "1234";
 
 	/**
 	 * Private constructor. Singleton.
@@ -27,11 +37,48 @@ public class WarningStage extends SecuritySystemState {
 	@Override
 	public void enter() {
 		SecuritySystemContext.instance().showWarning();
+		timer = new Timer(this, 10);
+		SecuritySystemContext.instance().showStayCowndown();
+		SecuritySystemContext.instance().showTimeLeft(timer.getTimeValue());
+	}
+
+	@Override
+	public void handleEvent(TimerTickedEvent event) {
+		SecuritySystemContext.instance().showTimeLeft(timer.getTimeValue());
+
+	}
+
+	@Override
+	public void handleEvent(SixtySecondEvent event) throws InterruptedException {
+		SecuritySystemContext.instance().showTimeLeft(0);
+		SecuritySystemContext.instance().changeState(BreachStage.instance());
+
+	}
+
+	/**
+	 * handleEvent method. Stores whatever the user entered into it's own variable
+	 * and re-displays it.
+	 * 
+	 * It later then checks to see if the password is valid or not.
+	 * 
+	 * If it's valid, it moves to the next stage.
+	 */
+	@Override
+	public void handleEvent(ValidPassEvent event) {
+		userEnteredPassword += SecuritySystemContext.instance().getDisplay().getGuiText().getText();
+		SecuritySystemContext.instance().getDisplay().getGuiText().setText(userEnteredPassword);
+		if (userEnteredPassword.equals(password)) {
+			SecuritySystemContext.instance().changeState(UnarmedStage.instance());
+		}
+
 	}
 
 	@Override
 	public void leave() {
-		// TODO Auto-generated method stub
+		timer.stop();
+		timer = null;
+		SecuritySystemContext.instance().showTimeRunOut();
+		SecuritySystemContext.instance().showTimeLeft(0);
 
 	}
 }
