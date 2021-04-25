@@ -164,7 +164,7 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
 	@Override
 	public void showTimeLeft(int time) {
-		textArea.setText(" " + time);
+		textArea.setText("Time Left: " + time + " s");
 
 	}
 
@@ -224,7 +224,7 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
 	@Override
 	public void showBreachState() {
-		textArea.setText("BREACH");
+		textArea.setText("BREACH!\n Enter password to disarm system.");
 	}
 
 	@Override

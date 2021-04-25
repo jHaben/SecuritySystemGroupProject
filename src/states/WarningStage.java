@@ -52,7 +52,6 @@ public class WarningStage extends SecuritySystemState implements Notifiable {
 	public void handleEvent(SixtySecondEvent event) throws InterruptedException {
 		SecuritySystemContext.instance().showTimeLeft(0);
 		SecuritySystemContext.instance().changeState(BreachStage.instance());
-
 	}
 
 	/**
@@ -79,6 +78,7 @@ public class WarningStage extends SecuritySystemState implements Notifiable {
 		timer = null;
 		SecuritySystemContext.instance().showTimeRunOut();
 		SecuritySystemContext.instance().showTimeLeft(0);
-
+		SecuritySystemContext.instance().showBreachState();
+		userEnteredPassword = "";
 	}
 }

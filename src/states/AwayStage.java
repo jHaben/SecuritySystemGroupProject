@@ -53,6 +53,7 @@ public class AwayStage extends SecuritySystemState {
 
 	@Override
 	public void leave() {
+		SecuritySystemContext.instance().showWarning();
 	}
 
 }

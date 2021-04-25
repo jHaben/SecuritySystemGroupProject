@@ -34,7 +34,6 @@ public class StayStage extends SecuritySystemState {
 
 	@Override
 	public void leave() {
-
 	}
 
 	public void handleEvent(CancelPressEvent event) {
@@ -42,7 +41,7 @@ public class StayStage extends SecuritySystemState {
 	}
 
 	/**
-	 * If a zone opens while it is in the StayArmed state
+	 * If a zone opens while it is in the StayArmed state, move into Breach State.
 	 */
 	@Override
 	public void handleEvent(DoorOpensEvent event) {
