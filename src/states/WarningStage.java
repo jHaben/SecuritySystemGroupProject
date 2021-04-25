@@ -36,6 +36,7 @@ public class WarningStage extends SecuritySystemState implements Notifiable {
 	 */
 	@Override
 	public void enter() {
+		userEnteredPassword = "";
 		SecuritySystemContext.instance().showWarning();
 		timer = new Timer(this, 10);
 		SecuritySystemContext.instance().showStayCowndown();

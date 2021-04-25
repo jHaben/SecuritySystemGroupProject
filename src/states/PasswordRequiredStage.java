@@ -36,7 +36,7 @@ public class PasswordRequiredStage extends SecuritySystemState {
 
 	@Override
 	public void leave() {
-
+		userEnteredPassword = "";
 	}
 
 	/**
