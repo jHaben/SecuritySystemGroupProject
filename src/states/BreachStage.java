@@ -41,7 +41,12 @@ public class BreachStage extends SecuritySystemState {
 	}
 	
 	public void handleEvent(ValidPassEvent event) {
-		userEnteredPassword += SecuritySystemContext.instance().getDisplay().getGuiText().getText();
+		if (userEnteredPassword.length() > 5) {
+			userEnteredPassword = SecuritySystemContext.instance().getDisplay().getGuiText().getText();
+		}
+		else {
+			userEnteredPassword += SecuritySystemContext.instance().getDisplay().getGuiText().getText();
+		}
 		SecuritySystemContext.instance().getDisplay().getGuiText().setText(userEnteredPassword);
 		if (userEnteredPassword.equals(password)) {
 			if (CheckBoxes.instance().getZonesReady()) {
