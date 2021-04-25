@@ -33,16 +33,17 @@ Stay
   - [X] Stay x Cancel = Password Required
 
 Password Required
-  - [ ] Password Required x Door(s) Open = Breach
+  - [X] Password Required x Door(s) Open = Breach
   - [X] Password Required x Cancel Button = Stay
   - [X] Password Required x Valid Password = Unarmed
 
 Warning
-  - [ ] Warning x Valid Password = Unarmed
-  - [ ] Warning x 60 Second Pass = Breach
+  - [X] Warning x Valid Password = Unarmed
+  - [X] Warning x 60 Second Pass = Breach
 
 Breach
-  - [ ] Breach x Valid Password = Unarmed
+  - [X] Breach x Valid Password + Door(s) Open = Unarmed
+  - [X] Breach x Valid Password + MotionDetected = ZoneReady: Unarmed
   
   
 <h1> Why things work </h1>
