@@ -52,6 +52,8 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
 	// Text area to advise the user of what's going on
 	private Text textArea = new Text();
+	//TODO: ADD ANOTHER TEXT AREA SO WE CAN ASSIGN ONE TO PW AND ONE TO STATE MESSAGE? If so, refractor textArea to messageTextArea - KOU
+	//private Text inputTextArea = newText();
 
 	// Label
 	private Label readyStatusLabel = new Label("Ready Status");
@@ -211,9 +213,10 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
 	}
 
+	//TODO: THIS ISN'T BEING USED/SHOWN ON GUI - KOU
 	@Override
 	public void showWarning() {
-		textArea.setText("Warning!\n Enter password to disarm system.");
+		textArea.setText("Warning!\nEnter password to disarm system.");
 
 	}
 
@@ -224,7 +227,7 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
 	@Override
 	public void showBreachState() {
-		textArea.setText("BREACH!\n Enter password to disarm system.");
+		textArea.setText("BREACHED!\nEnter password to disarm system.");
 	}
 
 	@Override

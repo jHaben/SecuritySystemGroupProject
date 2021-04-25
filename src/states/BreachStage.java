@@ -47,7 +47,7 @@ public class BreachStage extends SecuritySystemState {
 		else {
 			userEnteredPassword += SecuritySystemContext.instance().getDisplay().getGuiText().getText();
 		}
-		SecuritySystemContext.instance().getDisplay().getGuiText().setText(userEnteredPassword);
+		SecuritySystemContext.instance().getDisplay().getGuiText().setText("BREACHED!\nPassword: " + userEnteredPassword);
 		if (userEnteredPassword.equals(password)) {
 			if (CheckBoxes.instance().getZonesReady()) {
 				SecuritySystemContext.instance().changeState(ZoneReadyState.instance());
