@@ -1,11 +1,13 @@
 package states;
 
 import events.ValidPassEvent;
+import buttons.CheckBoxes;
 
 public class BreachStage extends SecuritySystemState {
 	private static BreachStage instance;
 	private String userEnteredPassword = "";
 	private String password = "1234";
+	private boolean zoneReady = CheckBoxes.instance().getZonesReady();
 	
 	/**
 	 * Private constructor. Singleton.
@@ -43,9 +45,14 @@ public class BreachStage extends SecuritySystemState {
 		userEnteredPassword += SecuritySystemContext.instance().getDisplay().getGuiText().getText();
 		SecuritySystemContext.instance().getDisplay().getGuiText().setText(userEnteredPassword);
 		if (userEnteredPassword.equals(password)) {
-			SecuritySystemContext.instance().changeState(UnarmedStage.instance());
+			if (CheckBoxes.instance().getZonesReady()) {
+				SecuritySystemContext.instance().changeState(ZoneReadyState.instance());
+			}
+			else {
+				SecuritySystemContext.instance().changeState(UnarmedStage.instance());
+			}
 		}
-
 	}
+	
 }
 
