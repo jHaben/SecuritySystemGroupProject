@@ -47,7 +47,7 @@ public class BreachStage extends SecuritySystemState {
 		else {
 			userEnteredPassword += SecuritySystemContext.instance().getDisplay().getGuiText().getText();
 		}
-		//TODO: WORKAROUND to using 2 text boxes when entering a password to include both state prompt and password. - KOU
+		//TODO: WORKAROUND to using 2 text boxes when entering a password to include both state prompt and password. - KOU Yang
 		SecuritySystemContext.instance().getDisplay().getGuiText().setText("BREACHED!\nPassword: " + userEnteredPassword);
 		if (userEnteredPassword.equals(password)) {
 			if (CheckBoxes.instance().getZonesReady()) {
