@@ -7,7 +7,6 @@ public class BreachStage extends SecuritySystemState {
 	private static BreachStage instance;
 	private String userEnteredPassword = "";
 	private String password = "1234";
-	private boolean zoneReady = CheckBoxes.instance().getZonesReady();
 	
 	/**
 	 * Private constructor. Singleton.
