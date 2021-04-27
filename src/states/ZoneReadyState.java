@@ -39,7 +39,6 @@ public class ZoneReadyState extends SecuritySystemState{
 
 	@Override
 	public void leave() {
-		// TODO Auto-generated method stub
 	}
 
 	public void handleEvent(DoorOpensEvent event) {
