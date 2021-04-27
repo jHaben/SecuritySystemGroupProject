@@ -8,7 +8,7 @@ import events.TimerTickedEvent;
 import timer.Notifiable;
 import timer.Timer;
 
-public class ZoneReadyState extends SecuritySystemState implements Notifiable {
+public class ZoneReadyState extends SecuritySystemState{
 	private static ZoneReadyState instance;
 
 	/**
@@ -47,24 +47,14 @@ public class ZoneReadyState extends SecuritySystemState implements Notifiable {
 	}
 
 	public void handleEvent(StayPressEvent event) {
-		SecuritySystemContext.instance().setTimer(new Timer(SecuritySystemContext.instance(), 5));
-		SecuritySystemContext.instance().changeState(AwayCountDoorClosedState.instance());
+		StayCountDoorClosedState.instance().setTimer(new Timer(StayCountDoorClosedState.instance(), 5));
+		StayCountDoorOpenState.instance().setTimer(new Timer(StayCountDoorOpenState.instance(), 5));
+		SecuritySystemContext.instance().changeState(StayCountDoorClosedState.instance());
 	}
 
 	public void handleEvent(AwayPressEvent event) {
-		SecuritySystemContext.instance().setTimer(new Timer(SecuritySystemContext.instance(), 5));
+		AwayCountDoorClosedState.instance().setTimer(new Timer(AwayCountDoorClosedState.instance(), 5));
+		AwayCountDoorOpenState.instance().setTimer(new Timer(AwayCountDoorOpenState.instance(), 5));
 		SecuritySystemContext.instance().changeState(AwayCountDoorClosedState.instance());
-	}
-
-	@Override
-	public void handleEvent(TimerTickedEvent event) {
-		SecuritySystemContext.instance().showTimeLeft(SecuritySystemContext.instance().getTimer().getTimeValue());
-
-	}
-
-	@Override
-	public void handleEvent(SixtySecondEvent event) throws InterruptedException {
-		// TODO Auto-generated method stub
-
 	}
 }

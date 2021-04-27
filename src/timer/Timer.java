@@ -49,7 +49,7 @@ public class Timer implements PropertyChangeListener {
     public Timer(Notifiable client, int timeValue) {
         this.client = client;
         this.timeValue = timeValue;
-        Clock.instance().addPropertyChangeListener(this);
+        //Clock.instance().addPropertyChangeListener(this);
     }
 
     /**
@@ -61,7 +61,12 @@ public class Timer implements PropertyChangeListener {
     public void addTimeValue(int value) {
         timeValue += value;
     }
+    
+    public void start() {
+        Clock.instance().addPropertyChangeListener(this);
+    }
 
+    
     /**
      * Stops the timer by deleting itself from the list of observers
      */

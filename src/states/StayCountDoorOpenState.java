@@ -4,10 +4,12 @@ import events.AllDoorCloseEvent;
 import events.SixtySecondEvent;
 import events.TimerTickedEvent;
 import timer.Notifiable;
+import timer.Timer;
 
 public class StayCountDoorOpenState extends SecuritySystemState implements Notifiable {
 	private static StayCountDoorOpenState instance;
-
+	private Timer timer = new Timer(this, 0);
+	
 	/**
 	 * Private constructor. Singleton.
 	 */
@@ -26,35 +28,43 @@ public class StayCountDoorOpenState extends SecuritySystemState implements Notif
 		return instance;
 	}
 
+	public Timer getTimer() {
+		return timer;
+	}
+
+	public void setTimer(Timer timer) {
+		this.timer = timer;
+	}
+
 	/**
 	 * Entering unarmed state. Will display on the GUI
 	 */
 	@Override
 	public void enter() {
-		SecuritySystemContext.instance().showTimeLeft(SecuritySystemContext.instance().getTimer().getTimeValue());
+		SecuritySystemContext.instance().showTimeLeft(timer.getTimeValue());
+		timer.start();
 	}
 
 	@Override
 	public void leave() {
-		SecuritySystemContext.instance().getTimer().stop();
-		SecuritySystemContext.instance().setTimer(null);
-		SecuritySystemContext.instance().showTimeLeft(0);
+		timer.stop();
 	}
 
 	@Override
 	public void handleEvent(TimerTickedEvent event) {
-		SecuritySystemContext.instance().showTimeLeft(SecuritySystemContext.instance().getTimer().getTimeValue());
-
+		SecuritySystemContext.instance().showTimeLeft(timer.getTimeValue());
 	}
 
 	@Override
 	public void handleEvent(SixtySecondEvent event) throws InterruptedException {
 		SecuritySystemContext.instance().showTimeLeft(0);
 		SecuritySystemContext.instance().changeState(UnarmedStage.instance());
-
 	}
 
+	@Override
 	public void handleEvent(AllDoorCloseEvent event) {
+		StayCountDoorClosedState.instance().getTimer().addTimeValue(timer.getTimeValue()-
+				StayCountDoorClosedState.instance().getTimer().getTimeValue());
 		SecuritySystemContext.instance().changeState(StayCountDoorClosedState.instance());
 	}
 

@@ -30,6 +30,14 @@ public class WarningStage extends SecuritySystemState implements Notifiable {
 		}
 		return instance;
 	}
+	
+	public Timer getTimer() {
+		return timer;
+	}
+
+	public void setTimer(Timer timer) {
+		this.timer = timer;
+	}
 
 	/**
 	 * Entering unarmed state. Will display on the GUI
@@ -38,7 +46,7 @@ public class WarningStage extends SecuritySystemState implements Notifiable {
 	public void enter() {
 		userEnteredPassword = "";
 		SecuritySystemContext.instance().showWarning();
-		timer = new Timer(this, 10);
+		//timer = new Timer(this, 10);
 		SecuritySystemContext.instance().showStayCowndown();
 		SecuritySystemContext.instance().showTimeLeft(timer.getTimeValue());
 	}
