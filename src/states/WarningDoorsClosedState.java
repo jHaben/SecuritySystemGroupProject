@@ -90,7 +90,7 @@ public class WarningDoorsClosedState extends SecuritySystemState implements Noti
 		//SecuritySystemContext.instance().getDisplay().getGuiText().setText(SecuritySystemContext.instance().getUserEnteredPassword());
 		if (SecuritySystemContext.instance().getUserEnteredPassword().equals(SecuritySystemContext.instance().getPassword())) {
 			SecuritySystemContext.instance().setUserEnteredPassword("");
-			SecuritySystemContext.instance().changeState(UnarmedStage.instance());
+			SecuritySystemContext.instance().changeState(ZoneReadyState.instance());
 		}
 	}
 }
