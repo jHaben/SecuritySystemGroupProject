@@ -7,9 +7,6 @@ import events.ValidPassEvent;
 public class PasswordRequiredStage extends SecuritySystemState {
 	private static PasswordRequiredStage instance;
 
-	private String userEnteredPassword = "";
-	private String password = "1234";
-
 	/**
 	 * Private constructor. Singleton.
 	 */
@@ -31,12 +28,10 @@ public class PasswordRequiredStage extends SecuritySystemState {
 	@Override
 	public void enter() {
 		SecuritySystemContext.instance().showPasswordRequired();
-		userEnteredPassword = "";
 	}
 
 	@Override
 	public void leave() {
-		userEnteredPassword = "";
 	}
 
 	/**
@@ -54,7 +49,7 @@ public class PasswordRequiredStage extends SecuritySystemState {
 	 */
 	@Override
 	public void handleEvent(DoorOpensEvent event) {
-
+		SecuritySystemContext.instance().setUserEnteredPassword("");
 		SecuritySystemContext.instance().changeState(BreachStage.instance());
 
 	}
@@ -69,17 +64,20 @@ public class PasswordRequiredStage extends SecuritySystemState {
 	 */
 	@Override
 	public void handleEvent(ValidPassEvent event) {
-		if (userEnteredPassword.length() > 5) {
-			userEnteredPassword = "";
+		if (SecuritySystemContext.instance().getUserEnteredPassword().length() > 5) {
+			SecuritySystemContext.instance().setUserEnteredPassword("");
 		}
 		else {
-			userEnteredPassword += SecuritySystemContext.instance().getDisplay().getGuiText().getText();
+			SecuritySystemContext.instance().setUserEnteredPassword(SecuritySystemContext.instance().getUserEnteredPassword() +
+					SecuritySystemContext.instance().getDisplay().getGuiText().getText());
 		}
-		SecuritySystemContext.instance().getDisplay().getGuiText().setText("Enter Password to Disarm.\nPassword:" + userEnteredPassword);
-		if (userEnteredPassword.equals(password)) {
+		SecuritySystemContext.instance().showPasswordRequired();
+//		SecuritySystemContext.instance().getDisplay().getGuiText().setText("Password: " 
+//				+ SecuritySystemContext.instance().getUserEnteredPassword());
+		if (SecuritySystemContext.instance().getUserEnteredPassword().equals(SecuritySystemContext.instance().getPassword())) {
+			SecuritySystemContext.instance().setUserEnteredPassword("");
 			SecuritySystemContext.instance().changeState(ZoneReadyState.instance());
 		}
-
 	}
 
 }

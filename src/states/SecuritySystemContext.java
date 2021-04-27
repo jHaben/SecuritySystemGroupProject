@@ -171,8 +171,8 @@ public class SecuritySystemContext{
 		display.showPasswordRequired();
 	}
 
-	public void showWarning() {
-		display.showWarning();
+	public void showWarning(int time) {
+		display.showWarning(time);
 	}
 
 	public void passwordBeingEntered() {

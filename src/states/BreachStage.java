@@ -5,8 +5,6 @@ import buttons.CheckBoxes;
 
 public class BreachStage extends SecuritySystemState {
 	private static BreachStage instance;
-	private String userEnteredPassword = "";
-	private String password = "1234";
 	
 	/**
 	 * Private constructor. Singleton.
@@ -31,29 +29,30 @@ public class BreachStage extends SecuritySystemState {
 	@Override
 	public void enter() {
 		SecuritySystemContext.instance().showBreachState();
-		userEnteredPassword = "";
 	}
 
 	@Override
 	public void leave() {
-		SecuritySystemContext.instance().showNotReady();
-		userEnteredPassword = "";
 	}
 	
 	public void handleEvent(ValidPassEvent event) {
-		if (userEnteredPassword.length() > 5) {
-			userEnteredPassword = "";
+		if (SecuritySystemContext.instance().getUserEnteredPassword().length() > 5) {
+			SecuritySystemContext.instance().setUserEnteredPassword("");
 		}
 		else {
-			userEnteredPassword += SecuritySystemContext.instance().getDisplay().getGuiText().getText();
+			SecuritySystemContext.instance().setUserEnteredPassword(SecuritySystemContext.instance().getUserEnteredPassword() +
+					SecuritySystemContext.instance().getDisplay().getGuiText().getText());
 		}
+		SecuritySystemContext.instance().showBreachState();
 		//TODO: WORKAROUND to using 2 text boxes when entering a password to include both state prompt and password. - KOU Yang
-		SecuritySystemContext.instance().getDisplay().getGuiText().setText("BREACHED!\nPassword: " + userEnteredPassword);
-		if (userEnteredPassword.equals(password)) {
+		//SecuritySystemContext.instance().getDisplay().getGuiText().setText("BREACHED!\nPassword: " + userEnteredPassword);
+		if (SecuritySystemContext.instance().getUserEnteredPassword().equals(SecuritySystemContext.instance().getPassword())) {
 			if (CheckBoxes.instance().getZonesReady()) {
+				SecuritySystemContext.instance().setUserEnteredPassword("");
 				SecuritySystemContext.instance().changeState(ZoneReadyState.instance());
 			}
 			else {
+				SecuritySystemContext.instance().setUserEnteredPassword("");
 				SecuritySystemContext.instance().changeState(UnarmedStage.instance());
 			}
 		}

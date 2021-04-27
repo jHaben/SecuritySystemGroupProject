@@ -26,7 +26,7 @@ import states.SecuritySystemContext;
 
 public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
-	public String passwordEntered = "";
+	
 	// ==== TEMPORARY BUTTON FOR DEBUGGING ====
 	private GUIButton currentStateButton = new CurrentStateButton("Click for current state");
 
@@ -166,7 +166,7 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
 	@Override
 	public void showTimeLeft(int time) {
-		textArea.setText("Time Left: " + time + " s");
+		textArea.setText("Time Left until armed: " + time + " s");
 	}
 
 	@Override
@@ -208,17 +208,19 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
 	@Override
 	public void showPasswordRequired() {
-		textArea.setText("Enter password to disarm alarm");
+		textArea.setText("Enter password to disarm alarm.\nPassword:" + SecuritySystemContext.instance().getUserEnteredPassword());
 
 	}
 
 	//TODO: THIS ISN'T BEING USED/SHOWN ON GUI - KOU
 	@Override
-	public void showWarning() {
-		textArea.setText("Warning!\nEnter password to disarm system.");
+	public void showWarning(int time) {
+		textArea.setText("Warning!\nEnter password to before " + time + "s\nPassword: " + 
+				SecuritySystemContext.instance().getUserEnteredPassword());
 
 	}
 
+	//TODO: Is this being used? - KOU
 	@Override
 	public void showingPassword(String numberButtonValue) {
 		textArea.setText(textArea.getText() + numberButtonValue);
@@ -226,7 +228,7 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
 	@Override
 	public void showBreachState() {
-		textArea.setText("BREACHED!\nEnter password to disarm system.");
+		textArea.setText("BREACHED! Enter password to disarm system.\nPassword:" + SecuritySystemContext.instance().getUserEnteredPassword());
 	}
 
 	@Override

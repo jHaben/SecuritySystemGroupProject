@@ -57,7 +57,6 @@ public class AwayStage extends SecuritySystemState {
 		WarningDoorsClosedState.instance().setTimer(new Timer(WarningDoorsClosedState.instance(), 10));
 		WarningDoorsOpenState.instance().setTimer(new Timer(WarningDoorsOpenState.instance(), 10));
 		SecuritySystemContext.instance().setUserEnteredPassword("");
-		SecuritySystemContext.instance().showWarning();	//TODO: Not being shown/used on GUI - Kou
 	}
 
 }

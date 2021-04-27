@@ -37,6 +37,7 @@ public class StayStage extends SecuritySystemState {
 	}
 
 	public void handleEvent(CancelPressEvent event) {
+		SecuritySystemContext.instance().setUserEnteredPassword("");
 		SecuritySystemContext.instance().changeState(PasswordRequiredStage.instance());
 	}
 
@@ -45,7 +46,7 @@ public class StayStage extends SecuritySystemState {
 	 */
 	@Override
 	public void handleEvent(DoorOpensEvent event) {
-
+		SecuritySystemContext.instance().setUserEnteredPassword("");
 		SecuritySystemContext.instance().changeState(BreachStage.instance());
 
 	}

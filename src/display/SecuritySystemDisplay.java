@@ -33,7 +33,7 @@ public interface SecuritySystemDisplay {
 
 	public void showPasswordRequired();
 
-	public void showWarning();
+	public void showWarning(int time);
 
 	public void showingPassword(String numberButtonValue);
 

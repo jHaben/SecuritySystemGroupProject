@@ -42,9 +42,8 @@ public class WarningDoorsOpenState extends SecuritySystemState implements Notifi
 	 */
 	@Override
 	public void enter() {
-		SecuritySystemContext.instance().showWarning();			//TODO: Not being shown - kou
 		SecuritySystemContext.instance().showStayCowndown();	//TODO: Not being shown - kou
-		SecuritySystemContext.instance().showTimeLeft(timer.getTimeValue());
+		SecuritySystemContext.instance().showWarning(timer.getTimeValue());
 		timer.start();
 	}
 	
@@ -55,12 +54,12 @@ public class WarningDoorsOpenState extends SecuritySystemState implements Notifi
 
 	@Override
 	public void handleEvent(TimerTickedEvent event) {
-		SecuritySystemContext.instance().showTimeLeft(timer.getTimeValue());
+		SecuritySystemContext.instance().showWarning(timer.getTimeValue());
 	}
 
 	@Override
 	public void handleEvent(SixtySecondEvent event) throws InterruptedException {
-		SecuritySystemContext.instance().showTimeLeft(0);
+		SecuritySystemContext.instance().setUserEnteredPassword("");
 		SecuritySystemContext.instance().changeState(BreachStage.instance());
 	}
 
@@ -87,8 +86,10 @@ public class WarningDoorsOpenState extends SecuritySystemState implements Notifi
 			SecuritySystemContext.instance().setUserEnteredPassword(SecuritySystemContext.instance().getUserEnteredPassword() +
 					SecuritySystemContext.instance().getDisplay().getGuiText().getText());
 		}
-		SecuritySystemContext.instance().getDisplay().getGuiText().setText(SecuritySystemContext.instance().getUserEnteredPassword());
+		SecuritySystemContext.instance().showWarning(timer.getTimeValue());
+		//SecuritySystemContext.instance().getDisplay().getGuiText().setText(SecuritySystemContext.instance().getUserEnteredPassword());
 		if (SecuritySystemContext.instance().getUserEnteredPassword().equals(SecuritySystemContext.instance().getPassword())) {
+			SecuritySystemContext.instance().setUserEnteredPassword("");
 			SecuritySystemContext.instance().changeState(UnarmedStage.instance());
 		}
 	}

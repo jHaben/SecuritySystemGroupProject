@@ -56,7 +56,6 @@ public class AwayCountDoorOpenState extends SecuritySystemState implements Notif
 
 	@Override
 	public void handleEvent(SixtySecondEvent event) throws InterruptedException {
-		SecuritySystemContext.instance().showTimeLeft(0);
 		SecuritySystemContext.instance().changeState(UnarmedStage.instance());
 	}
 

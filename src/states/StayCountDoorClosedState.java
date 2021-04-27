@@ -57,7 +57,6 @@ public class StayCountDoorClosedState extends SecuritySystemState implements Not
 
 	@Override
 	public void handleEvent(SixtySecondEvent event) throws InterruptedException {
-		SecuritySystemContext.instance().showTimeLeft(0);
 		SecuritySystemContext.instance().changeState(StayStage.instance());
 	}
 
