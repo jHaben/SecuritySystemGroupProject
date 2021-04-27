@@ -1,19 +1,15 @@
 package buttons;
 
-import events.AllDoorCloseEvent;
 import events.AwayPressEvent;
-import events.DoorOpensEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import states.AwayCheckDoorStage;
 import states.SecuritySystemContext;
 
 /**
- * AwayButton class.
- * extends GUIButton class. The button gets the String from GUIDisplay.
- * The handle event will determine what events are to happen.
+ * AwayButton class. extends GUIButton class. The button gets the String from
+ * GUIDisplay. The handle event will determine what events are to happen.
  * 
- * @author  Group: Mitchell Young, Kou Yang, Trung Pham, Jack Haben
+ * @author Group: Mitchell Young, Kou Yang, Trung Pham, Jack Haben
  *
  */
 
@@ -25,7 +21,7 @@ public class AwayButton extends GUIButton implements EventHandler<ActionEvent> {
 
 	@Override
 	public void handle(ActionEvent event) {
-        SecuritySystemContext.instance().handleEvent(AwayPressEvent.instance());
+		SecuritySystemContext.instance().handleEvent(AwayPressEvent.instance());
 	}
 
 }

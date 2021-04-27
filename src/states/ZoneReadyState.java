@@ -1,6 +1,5 @@
 package states;
 
-import events.AllDoorCloseEvent;
 import events.AwayPressEvent;
 import events.DoorOpensEvent;
 import events.SixtySecondEvent;
@@ -9,17 +8,18 @@ import events.TimerTickedEvent;
 import timer.Notifiable;
 import timer.Timer;
 
-public class ZoneReadyState extends SecuritySystemState implements Notifiable{
-private static ZoneReadyState instance;
-	
+public class ZoneReadyState extends SecuritySystemState implements Notifiable {
+	private static ZoneReadyState instance;
+
 	/**
 	 * Private constructor. Singleton.
 	 */
 	private ZoneReadyState() {
 	}
-	
+
 	/**
 	 * returning the instance
+	 * 
 	 * @return the instance object
 	 */
 	public static ZoneReadyState instance() {
@@ -28,10 +28,9 @@ private static ZoneReadyState instance;
 		}
 		return instance;
 	}
-	
+
 	/**
-	 * Entering unarmed state. 
-	 * Will display on the GUI
+	 * Entering unarmed state. Will display on the GUI
 	 */
 	@Override
 	public void enter() {
@@ -42,28 +41,30 @@ private static ZoneReadyState instance;
 	public void leave() {
 		// TODO Auto-generated method stub
 	}
-	
-	public void handleEvent(DoorOpensEvent event ) {
+
+	public void handleEvent(DoorOpensEvent event) {
 		SecuritySystemContext.instance().changeState(UnarmedStage.instance());
 	}
-	public void handleEvent(StayPressEvent event ) {
-		//add time to timer
-		SecuritySystemContext.instance().changeState(StayCoundownStage.instance());
-	}
-	public void handleEvent(AwayPressEvent event ) {
+
+	public void handleEvent(StayPressEvent event) {
 		SecuritySystemContext.instance().setTimer(new Timer(SecuritySystemContext.instance(), 5));
-		SecuritySystemContext.instance().changeState(AwayCountdownStage.instance());
+		SecuritySystemContext.instance().changeState(AwayCountDoorClosedState.instance());
+	}
+
+	public void handleEvent(AwayPressEvent event) {
+		SecuritySystemContext.instance().setTimer(new Timer(SecuritySystemContext.instance(), 5));
+		SecuritySystemContext.instance().changeState(AwayCountDoorClosedState.instance());
 	}
 
 	@Override
 	public void handleEvent(TimerTickedEvent event) {
 		SecuritySystemContext.instance().showTimeLeft(SecuritySystemContext.instance().getTimer().getTimeValue());
-		
+
 	}
 
 	@Override
 	public void handleEvent(SixtySecondEvent event) throws InterruptedException {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
