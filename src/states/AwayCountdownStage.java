@@ -8,7 +8,7 @@ import timer.Timer;
 
 public class AwayCountdownStage extends SecuritySystemState implements Notifiable{
 	private static AwayCountdownStage instance;
-	 private Timer timer;
+;
 	/**
 	 * Private constructor. Singleton.
 	 */
@@ -32,20 +32,18 @@ public class AwayCountdownStage extends SecuritySystemState implements Notifiabl
 	 */
 	@Override
 	public void enter() {
-		 timer = new Timer(this, 5);
-	      
-	       SecuritySystemContext.instance().showTimeLeft(timer.getTimeValue());	}
+	       SecuritySystemContext.instance().showTimeLeft(SecuritySystemContext.instance().getTimer().getTimeValue());	}
 
 	@Override
 	public void leave()  {
-		timer.stop();
-        timer = null;
+		SecuritySystemContext.instance().getTimer().stop();
+		SecuritySystemContext.instance().setTimer(null);
         SecuritySystemContext.instance().showTimeLeft(0);	
 	   	}
 
 	@Override
 	public void handleEvent(TimerTickedEvent event) {
-		SecuritySystemContext.instance().showTimeLeft(timer.getTimeValue());
+		SecuritySystemContext.instance().showTimeLeft(SecuritySystemContext.instance().getTimer().getTimeValue());
 		
 	}
 

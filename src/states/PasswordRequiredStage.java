@@ -70,12 +70,12 @@ public class PasswordRequiredStage extends SecuritySystemState {
 	@Override
 	public void handleEvent(ValidPassEvent event) {
 		if (userEnteredPassword.length() > 5) {
-			userEnteredPassword = SecuritySystemContext.instance().getDisplay().getGuiText().getText();
+			userEnteredPassword = "";
 		}
 		else {
 			userEnteredPassword += SecuritySystemContext.instance().getDisplay().getGuiText().getText();
 		}
-		SecuritySystemContext.instance().getDisplay().getGuiText().setText(userEnteredPassword);
+		SecuritySystemContext.instance().getDisplay().getGuiText().setText("Enter Password to Disarm.\nPassword:" + userEnteredPassword);
 		if (userEnteredPassword.equals(password)) {
 			SecuritySystemContext.instance().changeState(ZoneReadyState.instance());
 		}

@@ -167,7 +167,6 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 	@Override
 	public void showTimeLeft(int time) {
 		textArea.setText("Time Left: " + time + " s");
-
 	}
 
 	@Override

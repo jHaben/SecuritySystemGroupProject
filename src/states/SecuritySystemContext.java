@@ -6,8 +6,12 @@ import events.AwayPressEvent;
 import events.CancelPressEvent;
 import events.DoorOpensEvent;
 import events.MovementEvent;
+import events.SixtySecondEvent;
 import events.StayPressEvent;
+import events.TimerTickedEvent;
 import events.ValidPassEvent;
+import timer.Notifiable;
+import timer.Timer;
 
 /**
  * SecuritySystemContext
@@ -16,10 +20,11 @@ import events.ValidPassEvent;
  * @author Group: Mitchell Young, Kou Yang, Trung Pham, Jack Haben
  */
 
-public class SecuritySystemContext {
+public class SecuritySystemContext implements Notifiable{
 	private SecuritySystemDisplay display;
 	private SecuritySystemState currentState;
 	private static SecuritySystemContext instance;
+	private Timer timer;
 
 	/**
 	 * Making the class a singleton
@@ -28,6 +33,14 @@ public class SecuritySystemContext {
 		instance = this;
 		currentState = UnarmedStage.instance();
 		// currentState.enter();
+	}
+
+	public Timer getTimer() {
+		return timer;
+	}
+
+	public void setTimer(Timer timer) {
+		this.timer = timer;
 	}
 
 	public static SecuritySystemContext instance() {
@@ -171,6 +184,18 @@ public class SecuritySystemContext {
 
 	public void showBreachState() {
 		display.showBreachState();
+	}
+
+	@Override
+	public void handleEvent(TimerTickedEvent event) {
+		SecuritySystemContext.instance().showTimeLeft(SecuritySystemContext.instance().getTimer().getTimeValue());
+		
+	}
+
+	@Override
+	public void handleEvent(SixtySecondEvent event) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

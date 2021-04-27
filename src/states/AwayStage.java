@@ -2,6 +2,7 @@ package states;
 
 import events.DoorOpensEvent;
 import events.MovementEvent;
+import timer.Timer;
 
 public class AwayStage extends SecuritySystemState {
 	private static AwayStage instance;
@@ -53,6 +54,7 @@ public class AwayStage extends SecuritySystemState {
 
 	@Override
 	public void leave() {
+		SecuritySystemContext.instance().setTimer(new Timer(SecuritySystemContext.instance(), 10));
 		SecuritySystemContext.instance().showWarning();
 	}
 

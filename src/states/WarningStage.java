@@ -66,7 +66,7 @@ public class WarningStage extends SecuritySystemState implements Notifiable {
 	@Override
 	public void handleEvent(ValidPassEvent event) {
 		if (userEnteredPassword.length() > 5) {
-			userEnteredPassword = SecuritySystemContext.instance().getDisplay().getGuiText().getText();
+			userEnteredPassword = "";
 		}
 		else {
 			userEnteredPassword += SecuritySystemContext.instance().getDisplay().getGuiText().getText();
