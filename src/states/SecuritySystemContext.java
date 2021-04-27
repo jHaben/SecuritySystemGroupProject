@@ -6,12 +6,8 @@ import events.AwayPressEvent;
 import events.CancelPressEvent;
 import events.DoorOpensEvent;
 import events.MovementEvent;
-import events.SixtySecondEvent;
 import events.StayPressEvent;
-import events.TimerTickedEvent;
 import events.ValidPassEvent;
-import timer.Notifiable;
-import timer.Timer;
 
 /**
  * SecuritySystemContext
@@ -24,7 +20,9 @@ public class SecuritySystemContext{
 	private SecuritySystemDisplay display;
 	private SecuritySystemState currentState;
 	private static SecuritySystemContext instance;
-
+	private String userEnteredPassword = "";
+	private String password = "1234";
+	
 	/**
 	 * Making the class a singleton
 	 */
@@ -70,6 +68,22 @@ public class SecuritySystemContext{
 	 */
 	public void setDisplay(SecuritySystemDisplay display) {
 		this.display = display;
+	}
+	
+	public String getUserEnteredPassword() {
+		return userEnteredPassword;
+	}
+
+	public void setUserEnteredPassword(String userEnteredPassword) {
+		this.userEnteredPassword = userEnteredPassword;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	/**

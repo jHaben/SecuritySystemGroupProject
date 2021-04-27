@@ -32,8 +32,8 @@ public class NumberButton extends GUIButton implements EventHandler<ActionEvent>
 	@Override
 	public void handle(ActionEvent event) {
 		String currentStateString = SecuritySystemContext.instance().getCurrentState().getClass().getSimpleName();
-		if(currentStateString.equals("PasswordRequiredStage") || currentStateString.equals("WarningStage")
-				|| currentStateString.equals("BreachStage")) {
+		if(currentStateString.equals("PasswordRequiredStage") || currentStateString.equals("WarningDoorsClosedState")
+				|| currentStateString.equals("WarningDoorsOpenState") || currentStateString.equals("BreachStage")) {
 			GUIDisplay.getInstance().clearText();
 			GUIDisplay.getInstance().showingPassword(numberButtonValue);
 			SecuritySystemContext.instance().handleEvent(ValidPassEvent.instance());

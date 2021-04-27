@@ -38,7 +38,7 @@ public class AwayStage extends SecuritySystemState {
 	 */
 	@Override
 	public void handleEvent(DoorOpensEvent event) {
-		SecuritySystemContext.instance().changeState(WarningStage.instance());
+		SecuritySystemContext.instance().changeState(WarningDoorsOpenState.instance());
 	}
 
 	/**
@@ -49,13 +49,15 @@ public class AwayStage extends SecuritySystemState {
 	 */
 	@Override
 	public void handleEvent(MovementEvent event) {
-		SecuritySystemContext.instance().changeState(WarningStage.instance());
+		SecuritySystemContext.instance().changeState(WarningDoorsClosedState.instance());
 	}
 
 	@Override
 	public void leave() {
-		WarningStage.instance().setTimer(new Timer(WarningStage.instance(), 10));
-		SecuritySystemContext.instance().showWarning();
+		WarningDoorsClosedState.instance().setTimer(new Timer(WarningDoorsClosedState.instance(), 10));
+		WarningDoorsOpenState.instance().setTimer(new Timer(WarningDoorsOpenState.instance(), 10));
+		SecuritySystemContext.instance().setUserEnteredPassword("");
+		SecuritySystemContext.instance().showWarning();	//TODO: Not being shown/used on GUI - Kou
 	}
 
 }
