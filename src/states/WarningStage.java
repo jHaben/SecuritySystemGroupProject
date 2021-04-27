@@ -9,7 +9,7 @@ import timer.Timer;
 public class WarningStage extends SecuritySystemState implements Notifiable {
 	private static WarningStage instance;
 	private Timer timer;
-
+	//Test comment
 	private String userEnteredPassword = "";
 	private String password = "1234";
 
