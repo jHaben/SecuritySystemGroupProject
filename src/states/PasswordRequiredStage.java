@@ -50,7 +50,7 @@ public class PasswordRequiredStage extends SecuritySystemState {
 	@Override
 	public void handleEvent(DoorOpensEvent event) {
 		SecuritySystemContext.instance().setUserEnteredPassword("");
-		SecuritySystemContext.instance().changeState(BreachStage.instance());
+		SecuritySystemContext.instance().changeState(BreachDoorsOpenStage.instance());
 
 	}
 

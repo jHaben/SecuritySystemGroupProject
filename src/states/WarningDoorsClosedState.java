@@ -60,7 +60,7 @@ public class WarningDoorsClosedState extends SecuritySystemState implements Noti
 	@Override
 	public void handleEvent(SixtySecondEvent event) throws InterruptedException {
 		SecuritySystemContext.instance().setUserEnteredPassword("");
-		SecuritySystemContext.instance().changeState(BreachStage.instance());
+		SecuritySystemContext.instance().changeState(BreachDoorsClosedState.instance());
 	}
 
 	public void handleEvent(DoorOpensEvent event) {

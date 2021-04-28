@@ -60,7 +60,7 @@ public class WarningDoorsOpenState extends SecuritySystemState implements Notifi
 	@Override
 	public void handleEvent(SixtySecondEvent event) throws InterruptedException {
 		SecuritySystemContext.instance().setUserEnteredPassword("");
-		SecuritySystemContext.instance().changeState(BreachStage.instance());
+		SecuritySystemContext.instance().changeState(BreachDoorsOpenStage.instance());
 	}
 
 	public void handleEvent(AllDoorCloseEvent event) {

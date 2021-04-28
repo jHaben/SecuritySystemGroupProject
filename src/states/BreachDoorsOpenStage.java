@@ -1,24 +1,24 @@
 package states;
 
+import events.AllDoorCloseEvent;
 import events.ValidPassEvent;
-import buttons.CheckBoxes;
 
-public class BreachStage extends SecuritySystemState {
-	private static BreachStage instance;
+public class BreachDoorsOpenStage extends SecuritySystemState {
+	private static BreachDoorsOpenStage instance;
 	
 	/**
 	 * Private constructor. Singleton.
 	 */
-	private BreachStage() {
+	private BreachDoorsOpenStage() {
 	}
 	
 	/**
 	 * returning the instance
 	 * @return the instance object
 	 */
-	public static BreachStage instance() {
+	public static BreachDoorsOpenStage instance() {
 		if (instance == null) {
-			instance = new BreachStage();
+			instance = new BreachDoorsOpenStage();
 		}
 		return instance;
 	}
@@ -35,7 +35,12 @@ public class BreachStage extends SecuritySystemState {
 	public void leave() {
 	}
 	
+	public void handleEvent(AllDoorCloseEvent event) {
+		SecuritySystemContext.instance().changeState(BreachDoorsClosedState.instance());
+	}
+	
 	public void handleEvent(ValidPassEvent event) {
+		
 		if (SecuritySystemContext.instance().getUserEnteredPassword().length() > 5) {
 			SecuritySystemContext.instance().setUserEnteredPassword("");
 		}
@@ -43,18 +48,12 @@ public class BreachStage extends SecuritySystemState {
 			SecuritySystemContext.instance().setUserEnteredPassword(SecuritySystemContext.instance().getUserEnteredPassword() +
 					SecuritySystemContext.instance().getDisplay().getGuiText().getText());
 		}
+
 		SecuritySystemContext.instance().showBreachState();
-		//TODO: WORKAROUND to using 2 text boxes when entering a password to include both state prompt and password. - KOU Yang
-		//SecuritySystemContext.instance().getDisplay().getGuiText().setText("BREACHED!\nPassword: " + userEnteredPassword);
+
 		if (SecuritySystemContext.instance().getUserEnteredPassword().equals(SecuritySystemContext.instance().getPassword())) {
-			if (CheckBoxes.instance().getZonesReady()) {
-				SecuritySystemContext.instance().setUserEnteredPassword("");
-				SecuritySystemContext.instance().changeState(ZoneReadyState.instance());
-			}
-			else {
-				SecuritySystemContext.instance().setUserEnteredPassword("");
-				SecuritySystemContext.instance().changeState(UnarmedStage.instance());
-			}
+			SecuritySystemContext.instance().setUserEnteredPassword("");
+			SecuritySystemContext.instance().changeState(UnarmedStage.instance());
 		}
 	}
 	
