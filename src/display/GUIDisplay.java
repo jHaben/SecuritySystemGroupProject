@@ -83,7 +83,7 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 		securitySystemContext.setDisplay(this);
 		display = this;
 
-		// Number buttons
+		// Number buttons	
 		button1 = new NumberButton("1");
 		button2 = new NumberButton("2");
 		button3 = new NumberButton("3");
@@ -175,21 +175,25 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 		textArea.setText("Ready to arm");
 	}
 
+	//TODO: This is the same as showUnarmed - Kou
 	@Override
 	public void showNotReady() {
 		textArea.setText("Not ready to arm. One or more doors are open.");
 	}
 
+	//TODO: This is the same as showNotReady - Kou
 	@Override
 	public void showUnarmed() {
 		textArea.setText("Not ready to arm. One or more doors are open.");
 	}
 
+	//TODO: Is this being used? - Kou
 	@Override
 	public void showCounDownStart() {
 		textArea.setText("Time coundown start");
 	}
 
+	//TODO: Is this being used? - Kou
 	@Override
 	public void showTimeRunOut() {
 		textArea.setText("Time coundown start");
@@ -212,7 +216,6 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
 	}
 
-	//TODO: THIS ISN'T BEING USED/SHOWN ON GUI - KOU
 	@Override
 	public void showWarning(int time) {
 		textArea.setText("Warning!\nEnter password to before " + time + "s\nPassword: " + 
