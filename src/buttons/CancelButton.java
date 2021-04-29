@@ -17,6 +17,14 @@ import states.SecuritySystemState;
  */
 
 public class CancelButton extends GUIButton implements EventHandler<ActionEvent> {
+	
+	
+	/**
+	 * CancelButton Constructor. 
+	 * Takes the super and uses the string for naming the button
+	 * 
+	 * @param string
+	 */
 	public CancelButton(String string) {
 		super(string);
 	}

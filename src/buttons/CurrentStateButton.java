@@ -18,7 +18,12 @@ import states.SecuritySystemContext;
 
 public class CurrentStateButton extends GUIButton implements EventHandler<ActionEvent> {
 	
-	
+	/**
+	 * CurrentStateButton Constructor. 
+	 * Takes the super and uses the string for naming the button
+	 * 
+	 * @param string
+	 */
 	public CurrentStateButton(String string) {
 		super(string);
 	}

@@ -14,7 +14,13 @@ import states.SecuritySystemContext;
  */
 
 public class AwayButton extends GUIButton implements EventHandler<ActionEvent> {
-
+	
+	/**
+	 * AwayButton Constructor. 
+	 * Takes the super and uses the string for naming the button
+	 * 
+	 * @param string
+	 */
 	public AwayButton(String string) {
 		super(string);
 	}

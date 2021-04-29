@@ -15,6 +15,12 @@ import states.SecuritySystemContext;
 
 public class StayButton extends GUIButton implements EventHandler<ActionEvent> {
 
+	/**
+	 * StauButton Constructor. 
+	 * Takes the super and uses the string for naming the button
+	 * 
+	 * @param string
+	 */
 	public StayButton(String string) {
 		super(string);
 	}

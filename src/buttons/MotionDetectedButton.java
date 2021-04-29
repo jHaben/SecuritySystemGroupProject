@@ -17,6 +17,12 @@ import states.SecuritySystemContext;
 
 public class MotionDetectedButton extends GUIButton implements EventHandler<ActionEvent>  {
 
+	/**
+	 * MotionDetectedButton Constructor. 
+	 * Takes the super and uses the string for naming the button
+	 * 
+	 * @param string
+	 */
 	public MotionDetectedButton(String string) {
 		super(string);
 	}
