@@ -1,5 +1,10 @@
 package events;
-
+/**
+ * ValidPassEvent class
+ * This class is for the event in which the user enteres the correct password.
+ * 
+ * @author Group: Mitchell Young, Kou Yang, Trung Pham, Jack Haben
+ */
 public class ValidPassEvent extends SecuritySystemEvent {
 	private static ValidPassEvent instance;
 	/**

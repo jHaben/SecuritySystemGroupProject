@@ -1,27 +1,31 @@
 package events;
 
 /**
- * This class represents a clock tick. The object contains the amount of time
- * left in the timer.
+ * TimerTickedEvent class
+ * This class keeps track of the timer and everytime it ticks.
  * 
- * @author Brahma Dathan
- *
+ * @author Group: Mitchell Young, Kou Yang, Trung Pham, Jack Haben
  */
 public class TimerTickedEvent extends SecuritySystemEvent {
     private int timeLeft;
 
     /**
-     * Stores the amount of time left in the Timer.
+     * TimerTickedEvent constructor
+     * Stores the value of the timer left. 
      * 
      * @param value
-     *            the amount of time left
      */
     public TimerTickedEvent(int value) {
         this.timeLeft = value;
     }
 
+
     /**
-     * Needed for display purposes
+     * getTimeLeft method
+     * Gets the remaining time for
+     * whenever it is called.
+     * 
+     * @return timeLeft - an integer value displaying the time
      */
     public int getTimeLeft() {
         return timeLeft;

@@ -7,19 +7,20 @@ package events;
 public class SixtySecondEvent extends SecuritySystemEvent {
     private static SixtySecondEvent instance;
 
-    /**
-     * Private for singleton
-     * 
-     */
+	/**
+	 * Singleton for SixtySecondEvent event
+	 */
     private SixtySecondEvent() {
 
     }
 
-    /**
-     * For the singleton pattern
-     * 
-     * @return the only instance
-     */
+	/**
+	 * Creates a class instance.
+	 * If there is already an instance,
+	 * it returns the instance. 
+	 * Otherwise it creates a new instance.
+	 * @return
+	 */
     public static SixtySecondEvent instance() {
         if (instance == null) {
             instance = new SixtySecondEvent();
