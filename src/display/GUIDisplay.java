@@ -3,7 +3,6 @@ package display;
 import buttons.AwayButton;
 import buttons.CancelButton;
 import buttons.CheckBoxes;
-import buttons.CurrentStateButton;
 import buttons.GUIButton;
 import buttons.MotionDetectedButton;
 import buttons.NumberButton;
@@ -25,10 +24,6 @@ import states.SecuritySystemContext;
  */
 
 public class GUIDisplay extends Application implements SecuritySystemDisplay {
-
-	
-	// ==== TEMPORARY BUTTON FOR DEBUGGING ====
-	private GUIButton currentStateButton = new CurrentStateButton("Click for current state");
 
 	// Number buttons
 	private GUIButton button1;
@@ -133,9 +128,6 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 		bottomPane.add(zones.getZone1(), 0, 0);
 		bottomPane.add(zones.getZone2(), 1, 0);
 		bottomPane.add(zones.getZone3(), 2, 0);
-
-		// ====TEMPORARY BUTTON FOR DEBUGGING (TO CHECK CURRENT STATE) =====
-		bottomPane.add(currentStateButton, 2, 3);
 
 		// Adding all the panes together
 		userInterfacePane.add(topPane, 0, 0);
