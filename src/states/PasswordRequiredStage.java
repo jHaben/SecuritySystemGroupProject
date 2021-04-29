@@ -4,6 +4,12 @@ import events.CancelPressEvent;
 import events.DoorOpensEvent;
 import events.ValidPassEvent;
 
+/**
+ * passwordRequiredStage class. Singleton class
+ * Class that determines the handleEvent of said class
+ * 
+ * @author Group: Mitchell Young, Kou Yang, Trung Pham, Jack Haben
+ */
 public class PasswordRequiredStage extends SecuritySystemState {
 	private static PasswordRequiredStage instance;
 
@@ -72,8 +78,6 @@ public class PasswordRequiredStage extends SecuritySystemState {
 					SecuritySystemContext.instance().getDisplay().getGuiText().getText());
 		}
 		SecuritySystemContext.instance().showPasswordRequired();
-//		SecuritySystemContext.instance().getDisplay().getGuiText().setText("Password: " 
-//				+ SecuritySystemContext.instance().getUserEnteredPassword());
 		if (SecuritySystemContext.instance().getUserEnteredPassword().equals(SecuritySystemContext.instance().getPassword())) {
 			SecuritySystemContext.instance().setUserEnteredPassword("");
 			SecuritySystemContext.instance().changeState(ZoneReadyState.instance());

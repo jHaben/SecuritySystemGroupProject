@@ -2,6 +2,12 @@ package states;
 
 import events.AllDoorCloseEvent;
 
+/**
+ * UnarmedStage class. Singleton class
+ * Class that determines the handleEvent of said class
+ * 
+ * @author Group: Mitchell Young, Kou Yang, Trung Pham, Jack Haben
+ */
 public class UnarmedStage extends SecuritySystemState {
 	private static UnarmedStage instance;
 	
@@ -36,7 +42,6 @@ public class UnarmedStage extends SecuritySystemState {
 		SecuritySystemContext.instance().showReady();		
 	}
 	public void handleEvent(AllDoorCloseEvent event ) {
-		System.out.println("Going into `Ready to Arm` state - (UnarmedStage.java )");
 		SecuritySystemContext.instance().changeState(ZoneReadyState.instance());
 	}
 	

@@ -3,6 +3,12 @@ package states;
 import events.CancelPressEvent;
 import events.DoorOpensEvent;
 
+/**
+ * StayStage class. Singleton class
+ * Class that determines the handleEvent of said class
+ * 
+ * @author Group: Mitchell Young, Kou Yang, Trung Pham, Jack Haben
+ */
 public class StayStage extends SecuritySystemState {
 	private static StayStage instance;
 
@@ -36,6 +42,10 @@ public class StayStage extends SecuritySystemState {
 	public void leave() {
 	}
 
+	/**
+	 * handleEvent
+	 * Happens when the user presses cancel
+	 */
 	public void handleEvent(CancelPressEvent event) {
 		SecuritySystemContext.instance().setUserEnteredPassword("");
 		SecuritySystemContext.instance().changeState(PasswordRequiredStage.instance());

@@ -3,6 +3,13 @@ package states;
 import events.AllDoorCloseEvent;
 import events.ValidPassEvent;
 
+/**
+ * BreachDoorsOpenStage class. Singleton class
+ * Class that determines the handleEvent of said class
+ * 
+ * @author Group: Mitchell Young, Kou Yang, Trung Pham, Jack Haben
+ */
+
 public class BreachDoorsOpenStage extends SecuritySystemState {
 	private static BreachDoorsOpenStage instance;
 	
@@ -35,10 +42,18 @@ public class BreachDoorsOpenStage extends SecuritySystemState {
 	public void leave() {
 	}
 	
+	/**
+	 * handleEvent method for when all the doors close
+	 * Will go into BreachDoorsClosedState state
+	 */
 	public void handleEvent(AllDoorCloseEvent event) {
 		SecuritySystemContext.instance().changeState(BreachDoorsClosedState.instance());
 	}
 	
+	/**
+	 * handleEvent method for when the user enters the correct password.
+	 * Will use various conditionals to go into the according state.
+	 */
 	public void handleEvent(ValidPassEvent event) {
 		
 		if (SecuritySystemContext.instance().getUserEnteredPassword().length() > 5) {

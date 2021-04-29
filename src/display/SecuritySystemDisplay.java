@@ -89,7 +89,8 @@ public interface SecuritySystemDisplay {
 
 	/**
 	 * Method that gets the text in the GUI
-	 * @return
+	 * 
+	 * @return 
 	 */
 	public Text getGuiText();
 

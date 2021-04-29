@@ -6,6 +6,12 @@ import events.TimerTickedEvent;
 import timer.Notifiable;
 import timer.Timer;
 
+/**
+ * StayCountDoorOpenState class. Singleton class
+ * Class that determines the handleEvent of said class
+ * 
+ * @author Group: Mitchell Young, Kou Yang, Trung Pham, Jack Haben
+ */
 public class StayCountDoorOpenState extends SecuritySystemState implements Notifiable {
 	private static StayCountDoorOpenState instance;
 	//private Timer timer = new Timer(this, 0);

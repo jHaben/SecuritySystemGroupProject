@@ -14,8 +14,10 @@ import timer.Notifiable;
 import timer.Timer;
 
 /**
- * SecuritySystemContext
- * 
+ * SecuritySystemContext Singleton class
+ * The main class that operates a lot of the functionality.
+ * Utilized to leave, enter states. Also used to 
+ * perform various methods that will end up displaying on the gui.
  * 
  * @author Group: Mitchell Young, Kou Yang, Trung Pham, Jack Haben
  */
@@ -123,31 +125,72 @@ public class SecuritySystemContext implements Notifiable{
 	 * 
 	 */
 
+	/**
+	 * handleEvent for when the cancel button is pressed
+	 * @param event
+	 */
 	public void handleEvent(CancelPressEvent event) {
 		currentState.handleEvent(event);
 	}
 
+	/**
+	 * handleEvent for when the valid password is to be entered
+	 * 
+	 * @param event
+	 */
 	public void handleEvent(ValidPassEvent event) {
 		currentState.handleEvent(event);
 	}
 
+	/**
+	 * handleEvent for when a checkbox is unchecked
+	 * (A door/zone is opening)
+	 * 
+	 * @param event
+	 */
 	public void handleEvent(DoorOpensEvent event) {
 		currentState.handleEvent(event);
 	}
 
+	/**
+	 * handleEvent for when all the checkboxes are checked
+	 * (All doors/zones closed)
+	 * 
+	 * @param event
+	 */
 	public void handleEvent(AllDoorCloseEvent event) {
 		currentState.handleEvent(event);
 	}
 
+	/**
+	 * handleEvent for when all the movement detected
+	 * button is activated
+	 * 
+	 * @param event
+	 */
+	
 	public void handleEvent(MovementEvent event) {
 		currentState.handleEvent(event);
 
 	}
-
+	/**
+	 * handleEvent for when all the stay button
+	 *  detected is pressed
+	 *  
+	 * @param event
+	 */
+	
 	public void handleEvent(StayPressEvent event) {
 		currentState.handleEvent(event);
 	}
 
+	/**
+	 * handleEvent for when all the away 
+	 * button is activated
+	 * 
+	 * @param event
+	 */
+	
 	public void handleEvent(AwayPressEvent event) {
 		currentState.handleEvent(event);
 
@@ -161,42 +204,90 @@ public class SecuritySystemContext implements Notifiable{
 		display.showNotReady();
 	}
 
+	/**
+	 * showReady method
+	 * displays on the gui that the system is ready to be armed.
+	 */
 	public void showReady() {
 		display.showReady();
 	}
 
+	/**
+	 * showStayCowndown method
+	 * displays on the gui that the system is 
+	 * counting down.
+	 */
 	public void showStayCowndown() {
 		display.showCounDownStart();
 	}
 
+	/**
+	 * showTimeLeft method
+	 * displays on the gui the amount of time left
+	 */
 	public void showTimeLeft(int time) {
 		display.showTimeLeft(time);
 	}
 
+	/**
+	 * showTimeRunOut method
+	 * Shows that the timer has since ran out of time
+	 */
 	public void showTimeRunOut() {
 		display.showTimeRunOut();
 	}
 
+	/**
+	 * showPasswordRequired method
+	 * Displays on the gui that the password is required
+	 */
 	public void showPasswordRequired() {
 		display.showPasswordRequired();
 	}
 
+	/**
+	 * showWarning method.
+	 * Shows on the gui that the system is 
+	 * in the warning state.
+	 * 
+	 * @param time - the time left on the timer
+	 */
 	public void showWarning(int time) {
 		display.showWarning(time);
 	}
 
+	/**
+	 * passwordBeingEntered method.
+	 * Shows the password and the series of numbers
+	 * the user is clicking.
+	 */
 	public void passwordBeingEntered() {
 		display.showPasswordRequired();
 	}
 
+	/**
+	 * showAwayArmed method
+	 * Displays on the gui that the system
+	 * is armed in away mode
+	 */
 	public void showAwayArmed() {
 		display.showAwayArmed();
 	}
-
+	/**
+	 * showAwayArmed method
+	 * Displays on the gui that the system
+	 * is armed in stay mode
+	 */
 	public void showStayArmed() {
 		display.showStayArmed();
 	}
 
+	/**
+	 * showBreachState method.
+	 * Shows that the system has since 
+	 * been breached.
+	 * Will display on the gui
+	 */
 	public void showBreachState() {
 		display.showBreachState();
 	}

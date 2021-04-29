@@ -27,28 +27,17 @@ public class AwayCountDoorOpenState extends SecuritySystemState implements Notif
 		return instance;
 	}
 
-//	public Timer getTimer() {
-//		return timer;
-//	}
-//
-//	public void setTimer(Timer timer) {
-//		this.timer = timer;
-//	}
-
 	/**
-	 * Entering unarmed state. Will display on the GUI
+	 * Entering AwayCountDoorOpenState  state. Will display on the GUI
 	 */
 	@Override
 	public void enter() {
 		SecuritySystemContext.instance().showTimeLeft
 		(SecuritySystemContext.instance().getTimer().getTimeValue());
-		//timer.start();
 	}
 
 	@Override
 	public void leave() {
-		//timer.stop();
-		
 	}
 
 	@Override
@@ -64,6 +53,10 @@ public class AwayCountDoorOpenState extends SecuritySystemState implements Notif
 		SecuritySystemContext.instance().setTimer(null);
 	}
 
+	/**
+	 * handleEvent method for when all the doors are closed.
+	 * Changes state to the AwayCountDoorClosedState
+	 */
 	public void handleEvent(AllDoorCloseEvent event) {
 //		AwayCountDoorClosedState.instance().getTimer().addTimeValue(timer.getTimeValue()-
 //	    AwayCountDoorClosedState.instance().getTimer().getTimeValue());

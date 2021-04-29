@@ -36,10 +36,19 @@ public class BreachDoorsClosedState extends SecuritySystemState{
 		SecuritySystemContext.instance().showBreachState();
 	}
 	
+	/**
+	 * handleEvent method for when doors/zones open
+	 * Changes state to the BreachDoorsOpenStage
+	 */
 	public void handleEvent(DoorOpensEvent event) {
 		SecuritySystemContext.instance().changeState(BreachDoorsOpenStage.instance());
 	}
 	
+	/**
+	 * handleEvent method for when the user enters a password
+	 * Changes state to the according state 
+	 * via conditionals
+	 */
 	public void handleEvent(ValidPassEvent event) {
 		
 		if (SecuritySystemContext.instance().getUserEnteredPassword().length() > 5) {

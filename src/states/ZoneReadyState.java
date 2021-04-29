@@ -8,6 +8,12 @@ import events.TimerTickedEvent;
 import timer.Notifiable;
 import timer.Timer;
 
+/**
+ * ZoneReadyState class. Singleton class
+ * Class that determines the handleEvent of said class
+ * 
+ * @author Group: Mitchell Young, Kou Yang, Trung Pham, Jack Haben
+ */
 public class ZoneReadyState extends SecuritySystemState{
 	private static ZoneReadyState instance;
 
@@ -30,7 +36,7 @@ public class ZoneReadyState extends SecuritySystemState{
 	}
 
 	/**
-	 * Entering unarmed state. Will display on the GUI
+	 * Entering ZoneReadyState  state. Will display on the GUI
 	 */
 	@Override
 	public void enter() {
@@ -40,23 +46,29 @@ public class ZoneReadyState extends SecuritySystemState{
 	@Override
 	public void leave() {
 	}
-
+	
+	/**
+	 * handleEvent method for when the doors Open.
+	 * Changes state to unarmed State
+	 */
 	public void handleEvent(DoorOpensEvent event) {
 		SecuritySystemContext.instance().changeState(UnarmedStage.instance());
 	}
 
+	/**
+	 * handleEvent method for when the user presses "stay".
+	 * Changes the state to StayCountDoorClosedState
+	 */
 	public void handleEvent(StayPressEvent event) {
-//		StayCountDoorClosedState.instance().setTimer(new Timer(StayCountDoorClosedState.instance(), 5));
-//		StayCountDoorOpenState.instance().setTimer(new Timer(StayCountDoorOpenState.instance(), 5));
-//		SecuritySystemContext.instance().changeState(StayCountDoorClosedState.instance());
 		SecuritySystemContext.instance().setTimer(new Timer(SecuritySystemContext.instance(), 5));
 		SecuritySystemContext.instance().changeState(StayCountDoorClosedState.instance());
 		SecuritySystemContext.instance().getTimer().start();
 	}
-
+	/**
+	 * handleEvent method for when the user presses "away".
+	 * Changes the state to AwayCountDoorClosedState
+	 */
 	public void handleEvent(AwayPressEvent event) {
-//		AwayCountDoorClosedState.instance().setTimer(new Timer(AwayCountDoorClosedState.instance(), 5));
-//		AwayCountDoorOpenState.instance().setTimer(new Timer(AwayCountDoorOpenState.instance(), 5));
 		SecuritySystemContext.instance().setTimer(new Timer(SecuritySystemContext.instance(), 5));
 		SecuritySystemContext.instance().changeState(AwayCountDoorClosedState.instance());
 		SecuritySystemContext.instance().getTimer().start();

@@ -7,6 +7,12 @@ import events.ValidPassEvent;
 import timer.Notifiable;
 import timer.Timer;
 
+/**
+ * WarningDoorsClosedState class. Singleton class
+ * Class that determines the handleEvent of said class
+ * 
+ * @author Group: Mitchell Young, Kou Yang, Trung Pham, Jack Haben
+ */
 public class WarningDoorsClosedState extends SecuritySystemState implements Notifiable {
 	private static WarningDoorsClosedState instance;
 	//private Timer timer = new Timer(this, 0);
@@ -38,7 +44,7 @@ public class WarningDoorsClosedState extends SecuritySystemState implements Noti
 //	}
 
 	/**
-	 * Entering unarmed state. Will display on the GUI
+	 * Entering WarningDoorsClosedState state. Will display on the GUI
 	 */
 	@Override
 	public void enter() {
@@ -91,7 +97,6 @@ public class WarningDoorsClosedState extends SecuritySystemState implements Noti
 			SecuritySystemContext.instance().getDisplay().getGuiText().getText());
 		}
 		SecuritySystemContext.instance().showWarning(SecuritySystemContext.instance().getTimer().getTimeValue());
-		//SecuritySystemContext.instance().getDisplay().getGuiText().setText(SecuritySystemContext.instance().getUserEnteredPassword());
 		if (SecuritySystemContext.instance().getUserEnteredPassword().equals(SecuritySystemContext.instance().getPassword())) {
 			SecuritySystemContext.instance().setUserEnteredPassword("");
 			SecuritySystemContext.instance().changeState(ZoneReadyState.instance());
