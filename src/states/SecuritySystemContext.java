@@ -6,8 +6,12 @@ import events.AwayPressEvent;
 import events.CancelPressEvent;
 import events.DoorOpensEvent;
 import events.MovementEvent;
+import events.SixtySecondEvent;
 import events.StayPressEvent;
+import events.TimerTickedEvent;
 import events.ValidPassEvent;
+import timer.Notifiable;
+import timer.Timer;
 
 /**
  * SecuritySystemContext
@@ -16,13 +20,19 @@ import events.ValidPassEvent;
  * @author Group: Mitchell Young, Kou Yang, Trung Pham, Jack Haben
  */
 
-public class SecuritySystemContext{
+public class SecuritySystemContext implements Notifiable{
 	private SecuritySystemDisplay display;
 	private SecuritySystemState currentState;
 	private static SecuritySystemContext instance;
 	private String userEnteredPassword = "";
 	private String password = "1234";
-	
+	private Timer timer;
+	public Timer getTimer() {
+		return timer;
+	}
+	public void setTimer(Timer timer) {
+		this.timer = timer;
+	}
 	/**
 	 * Making the class a singleton
 	 */
@@ -189,6 +199,16 @@ public class SecuritySystemContext{
 
 	public void showBreachState() {
 		display.showBreachState();
+	}
+	@Override
+	public void handleEvent(TimerTickedEvent event) {
+		currentState.handleEvent(event);
+		
+	}
+	@Override
+	public void handleEvent(SixtySecondEvent event) throws InterruptedException {
+		currentState.handleEvent(event);
+		
 	}
 
 }

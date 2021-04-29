@@ -54,8 +54,9 @@ public class AwayStage extends SecuritySystemState {
 
 	@Override
 	public void leave() {
-		WarningDoorsClosedState.instance().setTimer(new Timer(WarningDoorsClosedState.instance(), 10));
-		WarningDoorsOpenState.instance().setTimer(new Timer(WarningDoorsOpenState.instance(), 10));
+		SecuritySystemContext.instance().setTimer(new Timer(SecuritySystemContext.instance(), 10));
+		SecuritySystemContext.instance().setTimer(new Timer(SecuritySystemContext.instance(), 10));
+		SecuritySystemContext.instance().getTimer().start();
 		SecuritySystemContext.instance().setUserEnteredPassword("");
 	}
 

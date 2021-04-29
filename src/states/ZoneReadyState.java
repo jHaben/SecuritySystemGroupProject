@@ -46,14 +46,21 @@ public class ZoneReadyState extends SecuritySystemState{
 	}
 
 	public void handleEvent(StayPressEvent event) {
-		StayCountDoorClosedState.instance().setTimer(new Timer(StayCountDoorClosedState.instance(), 5));
-		StayCountDoorOpenState.instance().setTimer(new Timer(StayCountDoorOpenState.instance(), 5));
+//		StayCountDoorClosedState.instance().setTimer(new Timer(StayCountDoorClosedState.instance(), 5));
+//		StayCountDoorOpenState.instance().setTimer(new Timer(StayCountDoorOpenState.instance(), 5));
+//		SecuritySystemContext.instance().changeState(StayCountDoorClosedState.instance());
+		SecuritySystemContext.instance().setTimer(new Timer(SecuritySystemContext.instance(), 5));
 		SecuritySystemContext.instance().changeState(StayCountDoorClosedState.instance());
+		SecuritySystemContext.instance().getTimer().start();
 	}
 
 	public void handleEvent(AwayPressEvent event) {
-		AwayCountDoorClosedState.instance().setTimer(new Timer(AwayCountDoorClosedState.instance(), 5));
-		AwayCountDoorOpenState.instance().setTimer(new Timer(AwayCountDoorOpenState.instance(), 5));
+//		AwayCountDoorClosedState.instance().setTimer(new Timer(AwayCountDoorClosedState.instance(), 5));
+//		AwayCountDoorOpenState.instance().setTimer(new Timer(AwayCountDoorOpenState.instance(), 5));
+		SecuritySystemContext.instance().setTimer(new Timer(SecuritySystemContext.instance(), 5));
 		SecuritySystemContext.instance().changeState(AwayCountDoorClosedState.instance());
+		SecuritySystemContext.instance().getTimer().start();
+		
+
 	}
 }

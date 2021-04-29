@@ -5,7 +5,9 @@ import events.AwayPressEvent;
 import events.CancelPressEvent;
 import events.DoorOpensEvent;
 import events.MovementEvent;
+import events.SixtySecondEvent;
 import events.StayPressEvent;
+import events.TimerTickedEvent;
 import events.ValidPassEvent;
 
 public abstract class SecuritySystemState {
@@ -52,6 +54,11 @@ public abstract class SecuritySystemState {
 		
 	}
 
+	public  void handleEvent(TimerTickedEvent event) {
+	}
+	public void handleEvent(SixtySecondEvent event) throws InterruptedException {
+		
+	}
 
 
 	

@@ -8,7 +8,7 @@ import timer.Timer;
 
 public class AwayCountDoorOpenState extends SecuritySystemState implements Notifiable {
 	private static AwayCountDoorOpenState instance;
-	private Timer timer = new Timer(this, 0);
+	//private Timer timer = new Timer(this, 0);
 	/**
 	 * Private constructor. Singleton.
 	 */
@@ -27,41 +27,46 @@ public class AwayCountDoorOpenState extends SecuritySystemState implements Notif
 		return instance;
 	}
 
-	public Timer getTimer() {
-		return timer;
-	}
-
-	public void setTimer(Timer timer) {
-		this.timer = timer;
-	}
+//	public Timer getTimer() {
+//		return timer;
+//	}
+//
+//	public void setTimer(Timer timer) {
+//		this.timer = timer;
+//	}
 
 	/**
 	 * Entering unarmed state. Will display on the GUI
 	 */
 	@Override
 	public void enter() {
-		SecuritySystemContext.instance().showTimeLeft(timer.getTimeValue());
-		timer.start();
+		SecuritySystemContext.instance().showTimeLeft
+		(SecuritySystemContext.instance().getTimer().getTimeValue());
+		//timer.start();
 	}
 
 	@Override
 	public void leave() {
-		timer.stop();
+		//timer.stop();
+		
 	}
 
 	@Override
 	public void handleEvent(TimerTickedEvent event) {
-		SecuritySystemContext.instance().showTimeLeft(timer.getTimeValue());
+		SecuritySystemContext.instance().showTimeLeft
+		(SecuritySystemContext.instance().getTimer().getTimeValue());
 	}
 
 	@Override
 	public void handleEvent(SixtySecondEvent event) throws InterruptedException {
 		SecuritySystemContext.instance().changeState(UnarmedStage.instance());
+		SecuritySystemContext.instance().getTimer().stop();
+		SecuritySystemContext.instance().setTimer(null);
 	}
 
 	public void handleEvent(AllDoorCloseEvent event) {
-		AwayCountDoorClosedState.instance().getTimer().addTimeValue(timer.getTimeValue()-
-				AwayCountDoorClosedState.instance().getTimer().getTimeValue());
+//		AwayCountDoorClosedState.instance().getTimer().addTimeValue(timer.getTimeValue()-
+//	    AwayCountDoorClosedState.instance().getTimer().getTimeValue());
 		SecuritySystemContext.instance().changeState(AwayCountDoorClosedState.instance());
 	}
 
