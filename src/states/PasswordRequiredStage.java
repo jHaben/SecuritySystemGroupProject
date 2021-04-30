@@ -72,8 +72,7 @@ public class PasswordRequiredStage extends SecuritySystemState {
 	public void handleEvent(ValidPassEvent event) {
 		if (SecuritySystemContext.instance().getUserEnteredPassword().length() > 5) {
 			SecuritySystemContext.instance().setUserEnteredPassword("");
-		}
-		else {
+		} else {
 			SecuritySystemContext.instance().setUserEnteredPassword(SecuritySystemContext.instance().getUserEnteredPassword() +
 					SecuritySystemContext.instance().getDisplay().getGuiText().getText());
 		}
