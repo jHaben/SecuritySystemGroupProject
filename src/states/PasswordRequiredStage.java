@@ -74,9 +74,10 @@ public class PasswordRequiredStage extends SecuritySystemState {
 			SecuritySystemContext.instance().setUserEnteredPassword("");
 		} else {
 			SecuritySystemContext.instance().setUserEnteredPassword(SecuritySystemContext.instance().getUserEnteredPassword() +
-					SecuritySystemContext.instance().getDisplay().getGuiText().getText());
+			SecuritySystemContext.instance().getDisplay().getGuiText().getText());
 		}
 		SecuritySystemContext.instance().showPasswordRequired();
+		
 		if (SecuritySystemContext.instance().getUserEnteredPassword().equals(SecuritySystemContext.instance().getPassword())) {
 			SecuritySystemContext.instance().setUserEnteredPassword("");
 			SecuritySystemContext.instance().changeState(ZoneReadyState.instance());
