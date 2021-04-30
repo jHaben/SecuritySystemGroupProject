@@ -35,10 +35,7 @@ public class CancelButton extends GUIButton implements EventHandler<ActionEvent>
 		 * Making a string for the current state 
 		 * Has to be in the handle method.
 		 */
-		String currentStateString = SecuritySystemContext.instance().getCurrentState().getClass().getSimpleName();
-		if (currentStateString.equals("StayStage")) {
-			SecuritySystemContext.instance().handleEvent(CancelPressEvent.instance());
-		} else if (currentStateString.equals("PasswordRequiredStage")) {
+		
 			SecuritySystemContext.instance().handleEvent(CancelPressEvent.instance());
 		} 
 
@@ -46,4 +43,4 @@ public class CancelButton extends GUIButton implements EventHandler<ActionEvent>
 		
 	}
 
-}
+
