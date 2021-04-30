@@ -15,8 +15,7 @@ import timer.Timer;
  */
 public class WarningDoorsOpenState extends SecuritySystemState implements Notifiable {
 	private static WarningDoorsOpenState instance;
-	//private Timer timer = new Timer(this, 0);
-
+	
 	/**
 	 * Private constructor. Singleton.
 	 */
@@ -35,13 +34,6 @@ public class WarningDoorsOpenState extends SecuritySystemState implements Notifi
 		return instance;
 	}
 	
-//	public Timer getTimer() {
-//		return timer;
-//	}
-//
-//	public void setTimer(Timer timer) {
-//		this.timer = timer;
-//	}
 
 	/**
 	 * Entering WarningDoorsOpenState state. Will display on the GUI
@@ -51,12 +43,12 @@ public class WarningDoorsOpenState extends SecuritySystemState implements Notifi
 		SecuritySystemContext.instance().showStayCowndown();	
 		SecuritySystemContext.instance().showWarning
 		(SecuritySystemContext.instance().getTimer().getTimeValue());
-		//timer.start();
+		
 	}
 	
 	@Override
 	public void leave() {
-		//timer.stop();
+		
 	}
 
 	@Override
@@ -75,8 +67,6 @@ public class WarningDoorsOpenState extends SecuritySystemState implements Notifi
 
 	
 	public void handleEvent(AllDoorCloseEvent event) {
-//		WarningDoorsClosedState.instance().getTimer().addTimeValue(timer.getTimeValue()-
-//				WarningDoorsClosedState.instance().getTimer().getTimeValue());
 		SecuritySystemContext.instance().changeState(WarningDoorsClosedState.instance());
 	}
 	

@@ -14,7 +14,7 @@ import timer.Timer;
  */
 public class StayCountDoorClosedState extends SecuritySystemState implements Notifiable {
 	private static StayCountDoorClosedState instance;
-	//private Timer timer = new Timer(this, 0);
+	
 	
 	/**
 	 * Private constructor. Singleton.
@@ -41,12 +41,11 @@ public class StayCountDoorClosedState extends SecuritySystemState implements Not
 	public void enter() {
 		SecuritySystemContext.instance().showTimeLeft
 		(SecuritySystemContext.instance().getTimer().getTimeValue());
-		//timer.start();
+		
 	}
 
 	@Override
 	public void leave() {
-		//timer.stop();
 		
 	}
 
@@ -64,8 +63,6 @@ public class StayCountDoorClosedState extends SecuritySystemState implements Not
 	}
 
 	public void handleEvent(DoorOpensEvent event) {
-//		StayCountDoorOpenState.instance().getTimer().addTimeValue(timer.getTimeValue()-
-//	    StayCountDoorOpenState.instance().getTimer().getTimeValue());
 		SecuritySystemContext.instance().changeState(StayCountDoorOpenState.instance());
 	}
 

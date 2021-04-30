@@ -15,7 +15,7 @@ import timer.Timer;
  */
 public class WarningDoorsClosedState extends SecuritySystemState implements Notifiable {
 	private static WarningDoorsClosedState instance;
-	//private Timer timer = new Timer(this, 0);
+	
 
 	/**
 	 * Private constructor. Singleton.
@@ -35,13 +35,6 @@ public class WarningDoorsClosedState extends SecuritySystemState implements Noti
 		return instance;
 	}
 	
-//	public Timer getTimer() {
-//		return timer;
-//	}
-//
-//	public void setTimer(Timer timer) {
-//		this.timer = timer;
-//	}
 
 	/**
 	 * Entering WarningDoorsClosedState state. Will display on the GUI
@@ -51,12 +44,11 @@ public class WarningDoorsClosedState extends SecuritySystemState implements Noti
 		SecuritySystemContext.instance().showStayCowndown();	//TODO: Not being shown - kou
 		SecuritySystemContext.instance().showWarning
 		(SecuritySystemContext.instance().getTimer().getTimeValue());
-		//timer.start();
+		
 	}
 	
 	@Override
 	public void leave() {
-		//timer.stop();
 	}
 
 	@Override
@@ -74,8 +66,6 @@ public class WarningDoorsClosedState extends SecuritySystemState implements Noti
 	}
 
 	public void handleEvent(DoorOpensEvent event) {
-//		WarningDoorsOpenState.instance().getTimer().addTimeValue(timer.getTimeValue()-
-//				WarningDoorsOpenState.instance().getTimer().getTimeValue());
 		SecuritySystemContext.instance().changeState(WarningDoorsOpenState.instance());
 	}
 	
@@ -94,8 +84,7 @@ public class WarningDoorsClosedState extends SecuritySystemState implements Noti
 		} else {
 			SecuritySystemContext.instance().setUserEnteredPassword(SecuritySystemContext.instance().getUserEnteredPassword() +
 			SecuritySystemContext.instance().getDisplay().getGuiText().getText());
-		}
-		
+		}		
 		SecuritySystemContext.instance().showWarning(SecuritySystemContext.instance().getTimer().getTimeValue());
 		
 		if (SecuritySystemContext.instance().getUserEnteredPassword().equals(SecuritySystemContext.instance().getPassword())) {

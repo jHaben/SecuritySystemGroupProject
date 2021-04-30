@@ -14,7 +14,6 @@ import timer.Timer;
  */
 public class StayCountDoorOpenState extends SecuritySystemState implements Notifiable {
 	private static StayCountDoorOpenState instance;
-	//private Timer timer = new Timer(this, 0);
 	
 	/**
 	 * Private constructor. Singleton.
@@ -33,14 +32,6 @@ public class StayCountDoorOpenState extends SecuritySystemState implements Notif
 		}
 		return instance;
 	}
-
-//	public Timer getTimer() {
-//		return timer;
-//	}
-//
-//	public void setTimer(Timer timer) {
-//		this.timer = timer;
-//	}
 
 	/**
 	 * Entering unarmed state. Will display on the GUI

@@ -8,7 +8,6 @@ import timer.Timer;
 
 public class AwayCountDoorClosedState extends SecuritySystemState implements Notifiable {
 	private static AwayCountDoorClosedState instance;
-	//private Timer timer = new Timer(this, 0);
 	
 	/**
 	 * Private constructor. Singleton.
@@ -28,13 +27,6 @@ public class AwayCountDoorClosedState extends SecuritySystemState implements Not
 		return instance;
 	}
 	
-//	public Timer getTimer() {
-//		return timer;
-//	}
-//
-//	public void setTimer(Timer timer) {
-//		this.timer = timer;
-//	}
 
 	/**
 	 * Entering unarmed state. Will display on the GUI
@@ -43,12 +35,10 @@ public class AwayCountDoorClosedState extends SecuritySystemState implements Not
 	public void enter() {
 		SecuritySystemContext.instance().showTimeLeft
 		(SecuritySystemContext.instance().getTimer().getTimeValue());
-		//timer.start();
 	}
 
 	@Override
 	public void leave() {
-		//timer.stop();
 	}
 
 	@Override
@@ -65,8 +55,6 @@ public class AwayCountDoorClosedState extends SecuritySystemState implements Not
 	}
 
 	public void handleEvent(DoorOpensEvent event) {
-//		AwayCountDoorOpenState.instance().getTimer().addTimeValue(timer.getTimeValue()-
-//				AwayCountDoorOpenState.instance().getTimer().getTimeValue());
 		SecuritySystemContext.instance().changeState(AwayCountDoorOpenState.instance());
 	}
 
