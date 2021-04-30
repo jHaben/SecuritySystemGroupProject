@@ -33,15 +33,7 @@ public class StayCountDoorClosedState extends SecuritySystemState implements Not
 		}
 		return instance;
 	}
-
-//	public Timer getTimer() {
-//		return timer;
-//	}
-//
-//	public void setTimer(Timer timer) {
-//		this.timer = timer;
-//	}
-
+	
 	/**
 	 * Entering unarmed state. Will display on the GUI
 	 */

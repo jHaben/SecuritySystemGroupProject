@@ -60,7 +60,7 @@ public class ZoneReadyState extends SecuritySystemState{
 	 * Changes the state to StayCountDoorClosedState
 	 */
 	public void handleEvent(StayPressEvent event) {
-		SecuritySystemContext.instance().setTimer(new Timer(SecuritySystemContext.instance(), 5));
+		SecuritySystemContext.instance().setTimer(new Timer(SecuritySystemContext.instance(), 10));
 		SecuritySystemContext.instance().changeState(StayCountDoorClosedState.instance());
 		SecuritySystemContext.instance().getTimer().start();
 	}
@@ -69,7 +69,7 @@ public class ZoneReadyState extends SecuritySystemState{
 	 * Changes the state to AwayCountDoorClosedState
 	 */
 	public void handleEvent(AwayPressEvent event) {
-		SecuritySystemContext.instance().setTimer(new Timer(SecuritySystemContext.instance(), 5));
+		SecuritySystemContext.instance().setTimer(new Timer(SecuritySystemContext.instance(), 10));
 		SecuritySystemContext.instance().changeState(AwayCountDoorClosedState.instance());
 		SecuritySystemContext.instance().getTimer().start();
 		

@@ -91,12 +91,13 @@ public class WarningDoorsClosedState extends SecuritySystemState implements Noti
 	public void handleEvent(ValidPassEvent event) {
 		if (SecuritySystemContext.instance().getUserEnteredPassword().length() > 5) {
 			SecuritySystemContext.instance().setUserEnteredPassword("");
-		}
-		else {
+		} else {
 			SecuritySystemContext.instance().setUserEnteredPassword(SecuritySystemContext.instance().getUserEnteredPassword() +
 			SecuritySystemContext.instance().getDisplay().getGuiText().getText());
 		}
+		
 		SecuritySystemContext.instance().showWarning(SecuritySystemContext.instance().getTimer().getTimeValue());
+		
 		if (SecuritySystemContext.instance().getUserEnteredPassword().equals(SecuritySystemContext.instance().getPassword())) {
 			SecuritySystemContext.instance().setUserEnteredPassword("");
 			SecuritySystemContext.instance().changeState(ZoneReadyState.instance());

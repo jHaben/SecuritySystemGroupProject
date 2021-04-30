@@ -73,8 +73,6 @@ public class StayCountDoorOpenState extends SecuritySystemState implements Notif
 
 	@Override
 	public void handleEvent(AllDoorCloseEvent event) {
-		//StayCountDoorClosedState.instance().getTimer().addTimeValue(timer.getTimeValue()-
-				//StayCountDoorClosedState.instance().getTimer().getTimeValue());
 		SecuritySystemContext.instance().changeState(StayCountDoorClosedState.instance());
 	}
 

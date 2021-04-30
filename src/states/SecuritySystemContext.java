@@ -32,6 +32,13 @@ public class SecuritySystemContext implements Notifiable{
 	public Timer getTimer() {
 		return timer;
 	}
+	
+	/**
+	 * Timer method.
+	 * Will set the time for the timer.
+	 * 
+	 * @param timer - timer object that sets the time
+	 */
 	public void setTimer(Timer timer) {
 		this.timer = timer;
 	}
@@ -113,7 +120,6 @@ public class SecuritySystemContext implements Notifiable{
 	 * @throws InterruptedException
 	 */
 	public void changeState(SecuritySystemState nextState) {
-		System.out.println("Changing states - (SecuritySystemContext.java -> changeState())");
 		currentState.leave();
 		currentState = nextState;
 		currentState.enter();
