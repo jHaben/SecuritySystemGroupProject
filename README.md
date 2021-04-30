@@ -36,7 +36,7 @@ Password Required
   - [X] Password Required x Door(s) Open = Breach
   - [X] Password Required x Cancel Button = Stay
   - [X] Password Required x Valid Password = Unarmed
-  - [ ] Edit code to use Passwords Strings from SecuritySystemContext
+  - [X] Edit code to use Passwords Strings from SecuritySystemContext
 
 Warning
   - [X] Warning x Valid Password = Unarmed
@@ -45,8 +45,8 @@ Warning
 Breach
   - [X] Breach x Valid Password + Door(s) Open = Unarmed
   - [X] Breach x Valid Password + MotionDetected = ZoneReady: Unarmed
-  - [ ] Edit code to use Passwords Strings from SecuritySystemContext
-  - [ ] Create another class to differentiate between Going into ZoneReady: Unarmed/Unarmed
+  - [X] Edit code to use Passwords Strings from SecuritySystemContext
+  - [X] Create another class to differentiate between Going into ZoneReady: Unarmed/Unarmed
   
 <h1> Why things work </h1>
 
