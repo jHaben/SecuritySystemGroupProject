@@ -54,8 +54,8 @@ public class AwayStage extends SecuritySystemState {
 
 	@Override
 	public void leave() {
-		SecuritySystemContext.instance().setTimer(new Timer(SecuritySystemContext.instance(), 10));
-		SecuritySystemContext.instance().setTimer(new Timer(SecuritySystemContext.instance(), 10));
+		SecuritySystemContext.instance().setTimer(new Timer(SecuritySystemContext.instance(), 15));
+		SecuritySystemContext.instance().setTimer(new Timer(SecuritySystemContext.instance(), 15));
 		SecuritySystemContext.instance().getTimer().start();
 		SecuritySystemContext.instance().setUserEnteredPassword("");
 	}
